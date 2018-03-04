@@ -196,6 +196,11 @@ html, body {
   font-weight: 700;
   font-size: 20px;
   color: hsl(0, 0%, 5%);
+  cursor: pointer;
+}
+
+.ps-PokemonCard__number:hover {
+  text-decoration: underline;
 }
 
 .ps-PokemonCard__characteristics {
