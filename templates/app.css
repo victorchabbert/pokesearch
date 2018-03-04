@@ -207,10 +207,32 @@ html, body {
   flex: 1 1 100%;
   display: flex;
   flex-flow: row nowrap;
+  height: 40px;
 }
 
 .ps-PokemonCard__physiognomy {
   flex: 1;
+}
+
+.ps-PokemonCard__interactions {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.ps-PokemonCard__heart,
+.ps-PokemonCard__bookmark {
+  margin-left: 12px;
+  cursor: pointer;
+  width: 16px;
+  fill: hsl(0, 0%, 80%);
+}
+
+.ps-PokemonCard__heart:hover {
+  fill: hsl(0, 86%, 51%);
+}
+
+.ps-PokemonCard__bookmark:hover {
+  fill: hsl(28, 87%, 62%);
 }
 
 .ps-PokemonCard__details {
