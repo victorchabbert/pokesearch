@@ -235,8 +235,8 @@ html, body {
 .ps-PokemonCard__sidebar-item--active::after {
   content: "";
   position: absolute;
-  right: -1px;
-  width: 1px;
+  right: -2px;
+  width: 3px;
   height: 100%;
   background: hsl(0, 0%, 100%);
 }
