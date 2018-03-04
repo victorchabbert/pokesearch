@@ -152,11 +152,15 @@ html, body {
 }
 
 .ps-PokemonCard__name {
-  flex: 1;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   color: hsl(0, 0%, 5%);
+}
+
+.ps-PokemonCard__types {
+  flex: 1;
+  padding: 0 10px;
 }
 
 .ps-PokemonCard__number {
@@ -264,4 +268,9 @@ html, body {
 .ps-label--black {
   color: hsl(0, 0%, 100%);
   background: hsl(0, 0%, 20%);
+}
+
+.ps-label--yellow {
+  color: hsl(0, 0%, 100%);
+  background: #F8D030;
 }
