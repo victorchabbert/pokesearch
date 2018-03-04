@@ -221,6 +221,33 @@ html, body {
 
 .ps-PokemonCard__physiognomy {
   flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+
+.ps-PokemonCard__physiognomy-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.ps-PokemonCard__physiognomy-item img {
+  height: 25px;
+}
+
+.ps-PokemonCard__physiognomy-item svg {
+  height: 18px;
+  fill: hsl(0, 0%, 80%);
+}
+
+.ps-PokemonCard__physiognomy-value {
+  margin: 0;
+  margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: hsl(0, 0%, 80%);
 }
 
 .ps-PokemonCard__interactions {
