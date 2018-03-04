@@ -42,11 +42,15 @@ html, body {
 
 .ps-Pokesearch {
   margin-top: 100px;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .ps-Pokesearch__header {
-  background: linear-gradient(hsla(0, 0%, 98%, 1) 65%, hsla(0, 0%, 98%, 0) 100%);
-  padding-bottom: 15px;
+  background: linear-gradient(hsla(0, 0%, 98%, 1) 75%, hsla(0, 0%, 98%, 0) 100%);
+  padding-bottom: 20px;
+  z-index: 5;
 }
 
 .ps-SearchBar {
@@ -77,6 +81,14 @@ html, body {
   padding: 0 10px 0 16px;
 }
 
+.ps-PokemonList {
+  position: relative;
+  padding-top: 30px;
+  top: -30px;
+  flex: 1;
+  overflow-y: auto;
+}
+
 .ps-PokemonCard {
   width: 480px;
   max-height: 350px;
@@ -88,6 +100,7 @@ html, body {
   padding-bottom: 5px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 15px;
 }
 
 .ps-PokemonCard:hover {
