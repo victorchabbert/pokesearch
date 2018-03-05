@@ -12,10 +12,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prepare": "npm link bs-platform"
+    "prepare": "npm link bs-platform",
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "bs-jest": "^0.3.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
     "reason-react": "^0.3.2"
+  },
+  "lint-staged": {
+    "*.{re,rei,ml,mli}": ["refmt --in-place", "git add"]
   }
 }
