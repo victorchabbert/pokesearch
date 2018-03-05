@@ -1,24 +1,27 @@
-.App {
-  text-align: center;
+.ps-app {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.ps-title {
+  font-family: 'Overpass', sans-serif;
+  font-size: 16px;
+  color: hsla(240, 3%, 14%, 1);
+  margin: 50px 0 0;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.ps-title--red {
+  color: hsla(0, 86%, 51%, 1);
 }
 
-.App-intro {
-  font-size: large;
+.ps-Pokesearch {
+  margin-top: 100px;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  right: -10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}

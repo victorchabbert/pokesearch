@@ -1,21 +1,17 @@
 [%bs.raw {|require('./app.css')|}];
 
-[@bs.module] external logo : string = "./logo.svg";
-
 let component = ReasonReact.statelessComponent("App");
 
-let make = (~message, _children) => {
+let se = ReasonReact.stringToElement;
+
+let make = (_children) => {
   ...component,
   render: (_self) =>
-    <div className="App">
-      <div className="App-header">
-        <img src=logo className="App-logo" alt="logo" />
-        <h2> (ReasonReact.stringToElement(message)) </h2>
-      </div>
-      <p className="App-intro">
-        (ReasonReact.stringToElement("To get started, edit"))
-        <code> (ReasonReact.stringToElement(" src/app.re ")) </code>
-        (ReasonReact.stringToElement("and save to reload."))
-      </p>
-    </div>
+    <main className="ps-app">
+      <h1 className="ps-title">
+        <span className="ps-title--red"> (ReasonReact.stringToElement("Poke")) </span>
+        {ReasonReact.stringToElement("search")}
+      </h1>
+      <section className="ps-Pokesearch"></section>
+    </main>
 };
