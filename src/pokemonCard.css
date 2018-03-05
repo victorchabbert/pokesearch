@@ -221,23 +221,3 @@
   border-top: 1px solid hsl(0, 0%, 80%);
   background: #F8D030;
 }
-
-.ps-label {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 1px;
-  padding: 0 3px;
-  border-radius: 2px;
-}
-
-.ps-label--black {
-  color: hsl(0, 0%, 100%);
-  background: hsl(0, 0%, 20%);
-}
-
-.ps-label--yellow {
-  color: hsl(0, 0%, 100%);
-  background: #F8D030;
-}
-
