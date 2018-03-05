@@ -1,0 +1,243 @@
+.ps-PokemonCard {
+  width: 480px;
+  max-height: 350px;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 3px;
+  background: hsl(0, 0%, 100%);
+  display: flex;
+  flex-flow: row wrap;
+  padding-bottom: 5px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.ps-PokemonCard:hover {
+  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.1)
+}
+
+.ps-PokemonCard__info {
+  flex: 1;
+  height: 100px;
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+  padding: 10px 15px 5px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+
+.ps-PokemonCard__name {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  color: hsl(0, 0%, 5%);
+}
+
+.ps-PokemonCard__types {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.ps-PokemonCard__number {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: hsl(0, 0%, 5%);
+  cursor: pointer;
+}
+
+.ps-PokemonCard__number:hover {
+  text-decoration: underline;
+}
+
+.ps-PokemonCard__characteristics {
+  flex: 1 1 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 40px;
+}
+
+.ps-PokemonCard__physiognomy {
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+
+.ps-PokemonCard__physiognomy-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.ps-PokemonCard__physiognomy-item img {
+  height: 25px;
+}
+
+.ps-PokemonCard__physiognomy-item svg {
+  height: 18px;
+  fill: hsl(0, 0%, 80%);
+}
+
+.ps-PokemonCard__physiognomy-value {
+  margin: 0;
+  margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: hsl(0, 0%, 80%);
+}
+
+.ps-PokemonCard__interactions {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.ps-PokemonCard__heart,
+.ps-PokemonCard__bookmark {
+  margin-left: 12px;
+  cursor: pointer;
+  width: 16px;
+  fill: hsl(0, 0%, 80%);
+}
+
+.ps-PokemonCard__heart:hover {
+  fill: hsl(0, 86%, 51%);
+}
+
+.ps-PokemonCard__bookmark:hover {
+  fill: hsl(28, 87%, 62%);
+}
+
+.ps-PokemonCard__details {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 250px;
+}
+
+.ps-PokemonCard__sidebar {
+  background: hsl(0, 0%, 97%);
+  margin-top: 20px;
+  flex: 0 0 100px;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 200px;
+  border-right: 1px solid hsl(0, 0%, 80%);
+}
+
+.ps-PokemonCard__sidebar-item {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ps-PokemonCard__sidebar-item:not(.ps-PokemonCard__sidebar-item--active) {
+  cursor: pointer;
+}
+
+.ps-PokemonCard__sidebar-item:hover {
+  background: hsl(0, 0%, 90%);
+}
+
+.ps-PokemonCard__sidebar-label {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: hsl(0, 0%, 45%);
+}
+
+.ps-PokemonCard__sidebar-item--active {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(0, 0%, 80%);
+  border-left: none;
+  border-right: none;
+  position: relative;
+}
+
+.ps-PokemonCard__sidebar-item--active:hover {
+  background: hsl(0, 0%, 100%);
+}
+
+.ps-PokemonCard__sidebar-item--active::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  width: 3px;
+  height: 100%;
+  background: hsl(0, 0%, 100%);
+}
+
+.ps-PokemonCard__sidebar-item--active > .ps-PokemonCard__sidebar-label {
+  font-weight: 600;
+  color: hsl(0, 0%, 20%);
+}
+
+.ps-PokemonCard__tab-scroll {
+  margin-bottom: 7px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ps-PokemonCard__ability {
+
+}
+
+.ps-PokemonCard__ability {
+  margin: 15px 10px;
+}
+
+.ps-PokemonCard__ability-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: hsl(0, 0%, 5%);
+  margin: 0 0 6px;
+}
+
+.ps-PokemonCard__ability-title--sub {
+  font-weight: 300;
+  font-size: 10px;
+  color: hsl(0, 0%, 45%);
+}
+
+.ps-PokemonCard__ability-description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: hsl(0, 0%, 20%);
+  margin: 0;
+}
+
+.ps-PokemonCard__bar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  border-top: 1px solid hsl(0, 0%, 80%);
+  background: #F8D030;
+}
+
+.ps-label {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
+.ps-label--black {
+  color: hsl(0, 0%, 100%);
+  background: hsl(0, 0%, 20%);
+}
+
+.ps-label--yellow {
+  color: hsl(0, 0%, 100%);
+  background: #F8D030;
+}
+

@@ -9,9 +9,16 @@ let make = (_children) => {
   render: (_self) =>
     <main className="ps-app">
       <h1 className="ps-title">
-        <span className="ps-title--red"> (ReasonReact.stringToElement("Poke")) </span>
-        {ReasonReact.stringToElement("search")}
+        <span className="ps-title--red"> (se("Poke")) </span>
+        (se("search"))
       </h1>
-      <section className="ps-Pokesearch"></section>
+      <section className="ps-Pokesearch">
+        <Header>
+          <SearchBar key="searchbar"/>
+        </Header>
+        <PokemonList>
+          <PokemonCard key="1" />
+        </PokemonList>
+      </section>
     </main>
 };

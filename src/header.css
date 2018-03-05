@@ -1,0 +1,7 @@
+.ps-Pokesearch__header {
+  background: linear-gradient(hsla(0, 0%, 98%, 1) 75%, hsla(0, 0%, 98%, 0) 100%);
+  padding-bottom: 20px;
+  z-index: 5;
+  max-width: 480px;
+}
+

@@ -1,0 +1,9 @@
+.ps-PokemonList {
+  position: relative;
+  padding-top: 20px;
+  top: -20px;
+  flex: 1;
+  overflow-y: auto;
+  width: 500px;
+}
+
