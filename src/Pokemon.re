@@ -7,7 +7,7 @@ type effects = {
 type abilityItem = {
   is_hidden: bool,
   slot: int,
-  effect_entries: list(effects)
+  ability: effects
 };
 
 type stat = {base_stat: int};
