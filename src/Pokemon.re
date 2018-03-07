@@ -1,4 +1,14 @@
-type abilityItem = {is_hidden: bool};
+type effects = {
+  name: string,
+  effect: string,
+  short_effect: string
+};
+
+type abilityItem = {
+  is_hidden: bool,
+  slot: int,
+  effect_entries: list(effects)
+};
 
 type stat = {base_stat: int};
 
