@@ -1,21 +1,40 @@
 [%bs.raw {|require("./pokemonCard.css")|}];
 
-let component = ReasonReact.statelessComponent("PokemonCard");
+type state = {active: int};
+
+type action =
+  | ChangeTab(int);
+
+type tabItem = {
+  label: string,
+  component: Js.Option.t(ReasonReact.reactElement)
+};
+
+let tabList: array(tabItem) = [|
+  {label: "Abilities", component: Js.Option.some(<PokemonAbilities />)},
+  {label: "Statistics", component: None},
+  {label: "Feed", component: None},
+  {label: "Impressions", component: None}
+|];
+
+let component = ReasonReact.reducerComponent("PokemonCard");
 
 let se = ReasonReact.stringToElement;
 
-let divideTen = (n) => float_of_int(n) /. 10.0;
-
-let appendZero = (s) => s ++ "0";
-
-let appendZeroIfNonNumeric = (s) => {
-  let last = Char.code(s.[String.length(s) - 1]);
-  last < 0 || last > 9 ? appendZero(s) : s
-};
-
 let make = (~pokemon: Pokemon.t, _children) => {
   ...component,
-  render: (_self) =>
+  initialState: () => {active: 0},
+  reducer: (action, state) =>
+    switch action {
+    | ChangeTab(active) =>
+      active != state.active ? ReasonReact.Update({active: active}) : ReasonReact.NoUpdate
+    },
+  render: (self) => {
+    let activeTab =
+      switch tabList[self.state.active].component {
+      | Some(tabItem) => tabItem
+      | None => se("Not found")
+      };
     <article className="ps-PokemonCard">
       <PokemonImage />
       <header className="ps-PokemonCard__info">
@@ -46,7 +65,12 @@ let make = (~pokemon: Pokemon.t, _children) => {
               <p className="ps-PokemonCard__physiognomy-value">
                 (
                   se(
-                    (pokemon.height |> divideTen |> string_of_float |> appendZeroIfNonNumeric)
+                    (
+                      pokemon.height
+                      |> PSUtils.divideTen
+                      |> string_of_float
+                      |> PSUtils.appendZeroIfNonNumeric
+                    )
                     ++ " m"
                   )
                 )
@@ -61,7 +85,12 @@ let make = (~pokemon: Pokemon.t, _children) => {
               <p className="ps-PokemonCard__physiognomy-value">
                 (
                   se(
-                    (pokemon.weight |> divideTen |> string_of_float |> appendZeroIfNonNumeric)
+                    (
+                      pokemon.weight
+                      |> PSUtils.divideTen
+                      |> string_of_float
+                      |> PSUtils.appendZeroIfNonNumeric
+                    )
                     ++ " kg"
                   )
                 )
@@ -87,42 +116,24 @@ let make = (~pokemon: Pokemon.t, _children) => {
         </div>
       </header>
       <section className="ps-PokemonCard__details">
-        <nav className="ps-PokemonCard__sidebar">
-          <div className="ps-PokemonCard__sidebar-item--active ps-PokemonCard__sidebar-item">
-            <p className="ps-PokemonCard__sidebar-label"> (se("Abilities")) </p>
-          </div>
-          <div className="ps-PokemonCard__sidebar-item">
-            <p className="ps-PokemonCard__sidebar-label"> (se("Statistics")) </p>
-          </div>
-          <div className="ps-PokemonCard__sidebar-item">
-            <p className="ps-PokemonCard__sidebar-label"> (se("Feed")) </p>
-          </div>
-          <div className="ps-PokemonCard__sidebar-item">
-            <p className="ps-PokemonCard__sidebar-label"> (se("Impressions")) </p>
-          </div>
-        </nav>
-        <div className="ps-PokemonCard__tab-scroll">
-          <div className="ps-PokemonCard__ability">
-            <h4 className="ps-PokemonCard__ability-title"> (se("Static")) </h4>
-            <p className="ps-PokemonCard__ability-description">
-              (se("Has a 30% chance of paralyzing attacking Pokémon on contact."))
-            </p>
-          </div>
-          <div className="ps-PokemonCard__ability">
-            <h4 className="ps-PokemonCard__ability-title">
-              (se("Lightning Rod"))
-              <span className="ps-PokemonCard__ability-title--sub"> (se("hidden")) </span>
-            </h4>
-            <p className="ps-PokemonCard__ability-description">
-              (
-                se(
-                  "Redirects single-target electric moves to this Pokémon where possible.  Absorbs Electric moves, raising Special Attack one stage"
-                )
-              )
-            </p>
-          </div>
-        </div>
+        <Tabs>
+          (
+            tabList
+            |> Array.mapi(
+                 (index, tabItem) =>
+                   <Tab
+                     key=(string_of_int(index))
+                     label=tabItem.label
+                     onClick=((_e) => self.send(ChangeTab(index)))
+                     selected=(self.state.active == index)
+                   />
+               )
+            |> ReasonReact.arrayToElement
+          )
+        </Tabs>
+        activeTab
       </section>
       <div className="ps-PokemonCard__bar" />
     </article>
+  }
 };
