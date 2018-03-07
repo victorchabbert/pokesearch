@@ -7,14 +7,14 @@ type action =
 
 type tabItem = {
   label: string,
-  component: Js.Option.t(ReasonReact.reactElement)
+  component: Pokemon.t => ReasonReact.reactElement
 };
 
-let tabList: array(tabItem) = [|
-  {label: "Abilities", component: Js.Option.some(<PokemonAbilities />)},
-  {label: "Statistics", component: None},
-  {label: "Feed", component: None},
-  {label: "Impressions", component: None}
+let tabList = [|
+  {label: "Abilities", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />},
+  {label: "Statistics", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />},
+  {label: "Feed", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />},
+  {label: "Impressions", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />}
 |];
 
 let component = ReasonReact.reducerComponent("PokemonCard");
@@ -30,11 +30,7 @@ let make = (~pokemon: Pokemon.t, _children) => {
       active != state.active ? ReasonReact.Update({active: active}) : ReasonReact.NoUpdate
     },
   render: (self) => {
-    let activeTab =
-      switch tabList[self.state.active].component {
-      | Some(tabItem) => tabItem
-      | None => se("Not found")
-      };
+    let activeTab = tabList[self.state.active].component(pokemon);
     <article className="ps-PokemonCard">
       <PokemonImage />
       <PokemonHeader
