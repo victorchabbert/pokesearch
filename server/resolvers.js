@@ -10,7 +10,6 @@ const resolvers = {
   },
   Abilities: {
     ability: (parent) => {
-      console.log("Ability", parent);
       const ability = parent.ability;
       if (ability && ability.url) {
         return fetch(ability.url).then(res => res.json());
@@ -18,6 +17,9 @@ const resolvers = {
       return null;
     }
   },
+  Types: {
+    type_: (parent) => parent.type
+  }
 };
 
 module.exports = resolvers;

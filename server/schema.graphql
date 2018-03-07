@@ -60,7 +60,7 @@ type Stat {
 
 type Types {
   slot: Int!
-  type: Type
+  type_: Type
 }
 
 type Type {
