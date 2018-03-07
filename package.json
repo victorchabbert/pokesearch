@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "graphql-yoga": "^1.4.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reason-scripts": "0.8.0"
@@ -19,9 +20,13 @@
     "bs-jest": "^0.3.2",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
+    "node-fetch": "^2.1.1",
     "reason-react": "^0.3.2"
   },
   "lint-staged": {
-    "*.{re,rei,ml,mli}": ["refmt --in-place", "git add"]
+    "*.{re,rei,ml,mli}": [
+      "refmt --in-place",
+      "git add"
+    ]
   }
 }
