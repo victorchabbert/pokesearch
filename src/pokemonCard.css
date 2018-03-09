@@ -83,41 +83,6 @@
   color: hsl(0, 0%, 20%);
 }
 
-.ps-PokemonCard__tab-scroll {
-  margin-bottom: 7px;
-  flex: 1;
-  overflow-y: auto;
-}
-
-.ps-PokemonCard__ability {
-
-}
-
-.ps-PokemonCard__ability {
-  margin: 15px 10px;
-}
-
-.ps-PokemonCard__ability-title {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: hsl(0, 0%, 5%);
-  margin: 0 0 6px;
-}
-
-.ps-PokemonCard__ability-title--sub {
-  font-weight: 300;
-  font-size: 10px;
-  color: hsl(0, 0%, 45%);
-}
-
-.ps-PokemonCard__ability-description {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  color: hsl(0, 0%, 20%);
-  margin: 0;
-}
-
 .ps-PokemonCard__bar {
   position: absolute;
   bottom: 0;

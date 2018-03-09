@@ -11,10 +11,10 @@ type tabItem = {
 };
 
 let tabList = [|
-  {label: "Abilities", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />},
-  {label: "Statistics", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />},
-  {label: "Feed", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />},
-  {label: "Impressions", component: (pokemon) => <PokemonAbilities abilities=pokemon.abilities />}
+  {label: "Abilities", component: (pokemon) => <TabAbilities abilities=pokemon.abilities />},
+  {label: "Statistics", component: (_pokemon) => <TabStatistics />},
+  {label: "Feed", component: (pokemon) => <TabAbilities abilities=pokemon.abilities />},
+  {label: "Impressions", component: (pokemon) => <TabAbilities abilities=pokemon.abilities />}
 |];
 
 let component = ReasonReact.reducerComponent("PokemonCard");
