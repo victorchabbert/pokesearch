@@ -13,7 +13,7 @@ type tabItem = {
 let tabList = [|
   {label: "Abilities", component: (pokemon) => <TabAbilities abilities=pokemon.abilities />},
   {label: "Statistics", component: (_pokemon) => <TabStatistics />},
-  {label: "Feed", component: (pokemon) => <TabAbilities abilities=pokemon.abilities />},
+  {label: "Feed", component: (pokemon) => <TabFeed name=pokemon.name />},
   {label: "Impressions", component: (pokemon) => <TabAbilities abilities=pokemon.abilities />}
 |];
 
