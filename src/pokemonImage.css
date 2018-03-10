@@ -62,7 +62,8 @@
   cursor: pointer;
 }
 
-.ps-PokemonCard__picture-control:hover > .ps-PokemonCard__control-label {
+.ps-PokemonCard__picture-control:hover > .ps-PokemonCard__control-label,
+.ps-PokemonCard__picture-control--active > .ps-PokemonCard__control-label {
   opacity: 1;
 }
 

@@ -32,7 +32,7 @@ let make = (~pokemon: Pokemon.t, _children) => {
   render: (self) => {
     let activeTab = tabList[self.state.active].component(pokemon);
     <article className="ps-PokemonCard">
-      <PokemonImage />
+      <PokemonImage sprites=pokemon.sprites />
       <PokemonHeader
         name=pokemon.name
         types=pokemon.types

@@ -13,7 +13,7 @@ let component = ReasonReact.reducerComponent("PokemonImage");
 
 let se = ReasonReact.stringToElement;
 
-let make = (_children) => {
+let make = (~sprites: Pokemon.sprites, _children) => {
   ...component,
   initialState: () => {shine: false, flip: false},
   reducer: (action, state) =>
@@ -26,12 +26,23 @@ let make = (_children) => {
       className=(
         "ps-PokemonCard__picture" ++ (self.state.flip ? " ps-PokemonCard__picture--flipped" : "")
       )>
-      <div className="ps-PokemonCard__flipper">
-        <img src="/img/25.png" alt="pikachu" />
-        <img src="/img/25-back.png" alt="pikachu" />
-      </div>
+      (
+        self.state.shine ?
+          <div className="ps-PokemonCard__flipper">
+            <img src=sprites.front_shiny alt="pikachu" />
+            <img src=sprites.back_shiny alt="pikachu" />
+          </div> :
+          <div className="ps-PokemonCard__flipper">
+            <img src=sprites.front_default alt="pikachu" />
+            <img src=sprites.back_default alt="pikachu" />
+          </div>
+      )
       <div className="ps-PokemonCard__picture-controls">
-        <div className="ps-PokemonCard__picture-control">
+        <div
+          className=(
+            (self.state.shine ? "ps-PokemonCard__picture-control--active " : "")
+            ++ "ps-PokemonCard__picture-control"
+          )>
           <svg
             className="ps-PokemonCard__control-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +54,7 @@ let make = (_children) => {
           <span
             onClick=((_e) => self.send(ToggleShine))
             className="ps-label ps-label--black ps-PokemonCard__control-label">
-            (se("Shine"))
+            (se("Shiny"))
           </span>
         </div>
         <div className="ps-PokemonCard__picture-control">
