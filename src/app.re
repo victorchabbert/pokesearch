@@ -49,7 +49,10 @@ let make = (_children) => {
       </h1>
       <section className="ps-Pokesearch">
         <Header> <SearchBar key="searchbar" /> </Header>
-        <PokemonList> <PokemonCard key="1" pokemon /> </PokemonList>
+        <PokemonList>
+          <PokemonCard key="1" pokemon />
+          <PokemonCard key="2" pokemon />
+        </PokemonList>
       </section>
     </main>
 };

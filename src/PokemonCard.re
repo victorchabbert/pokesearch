@@ -21,7 +21,7 @@ let component = ReasonReact.reducerComponent("PokemonCard");
 
 let se = ReasonReact.stringToElement;
 
-let make = (~pokemon: Pokemon.t, _children) => {
+let make = (~pokemon: Pokemon.t, ~expand=false, _children) => {
   ...component,
   initialState: () => {active: 0},
   reducer: (action, state) =>
@@ -31,7 +31,7 @@ let make = (~pokemon: Pokemon.t, _children) => {
     },
   render: (self) => {
     let activeTab = tabList[self.state.active].component(pokemon);
-    <article className="ps-PokemonCard">
+    <article className=((expand ? "" : "ps-PokemonCard--short ") ++ "ps-PokemonCard")>
       <PokemonImage sprites=pokemon.sprites />
       <PokemonHeader
         name=pokemon.name
