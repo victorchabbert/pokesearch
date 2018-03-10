@@ -12,7 +12,9 @@ let setTwitterElement = (theRef, {ReasonReact.state}) => state.el := Js.Nullable
 
 let se = ReasonReact.stringToElement;
 
-type twitter = {. "widgets": {. [@bs.meth] load : unit => unit}};
+type widgets = {. [@bs.meth] load : unit => unit};
+
+type twitter = {. "widgets": Js.t(widgets)};
 
 [@bs.val] [@bs.scope "window"] [@bs.return nullable] external twttr : option(twitter) = "twttr";
 
