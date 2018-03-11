@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 const resolvers = {
   Query: {
-    pokemons: () => fetch(`${baseURL}/pokemon`).then(res => res.json()),
+    pokemons: (parent, {limit, offset}, context) => context.Pokemon.getNameList(limit, offset),
     pokemon: (parent, { name }, context) => {
       return context.Pokemon.getByName(name);
     },
