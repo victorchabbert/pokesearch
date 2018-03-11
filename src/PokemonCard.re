@@ -11,6 +11,12 @@ let component = ReasonReact.reducerComponent("PokemonCard");
 
 let se = ReasonReact.stringToElement;
 
+let accentBar = (types) => {
+  let color = Label.getColorFromKeyword(types[0]##type_##name);
+  let colorClass = Label.getColorClass(Js.Option.some(color));
+  <div className=("ps-PokemonCard__bar " ++ colorClass) />
+};
+
 let make = (~pokemon, ~expand=false, _children) => {
   ...component,
   initialState: () => {active: 0},
@@ -54,7 +60,7 @@ let make = (~pokemon, ~expand=false, _children) => {
         </Tabs>
         activeTab
       </section>
-      <div className="ps-PokemonCard__bar" />
+      (accentBar(pokemon##types))
     </article>
   }
 };

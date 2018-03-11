@@ -5,15 +5,106 @@
   letter-spacing: 1px;
   padding: 0 3px;
   border-radius: 2px;
+  margin-right: 5px;
 }
 
-.ps-label--black {
+.ps--black {
   color: hsl(0, 0%, 100%);
   background: hsl(0, 0%, 20%);
 }
 
-.ps-label--yellow {
+.ps--hillary {
+  color: hsl(0, 0%, 100%);
+  background: #a8a878;
+}
+
+.ps--light_red {
+  color: hsl(0, 0%, 100%);
+  background: #F08030;
+}
+
+.ps--red {
+  color: hsl(0, 0%, 100%);
+  background: #C03028;
+}
+
+.ps--blue {
+  color: hsl(0, 0%, 100%);
+  background: #6890F0;
+}
+
+.ps--light_purple {
+  color: hsl(0, 0%, 100%);
+  background: #A890F0;
+}
+
+.ps--green {
+  color: hsl(0, 0%, 100%);
+  background: #78C850;
+}
+
+.ps--mauve {
+  color: hsl(0, 0%, 100%);
+  background: #A040A0;
+}
+
+.ps--yellow {
   color: hsl(0, 0%, 100%);
   background: #F8D030;
+}
+
+.ps--wheat {
+  color: hsl(0, 0%, 100%);
+  background: #E0C068;
+}
+
+.ps--dark_pink {
+  color: hsl(0, 0%, 100%);
+  background: #F85888;
+}
+
+.ps--brown {
+  color: hsl(0, 0%, 100%);
+  background: #B8A038;
+}
+
+.ps--light_blue {
+  color: hsl(0, 0%, 100%);
+  background: #98D8D8;
+}
+
+.ps--kaki {
+  color: hsl(0, 0%, 100%);
+  background: #A8B820;
+}
+
+.ps--purple {
+  color: hsl(0, 0%, 100%);
+  background: #7038F8;
+}
+
+.ps--wine {
+  color: hsl(0, 0%, 100%);
+  background: #705898;
+}
+
+.ps--dark_brown {
+  color: hsl(0, 0%, 100%);
+  background: #705848;
+}
+
+.ps--grey {
+  color: hsl(0, 0%, 100%);
+  background: #B8B8D0;
+}
+
+.ps--pink {
+  color: hsl(0, 0%, 100%);
+  background: #EE99AC;
+}
+
+.ps--turquoise {
+  color: hsl(0, 0%, 100%);
+  background: #68A090;
 }
 
