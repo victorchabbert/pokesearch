@@ -13,7 +13,7 @@ let component = ReasonReact.reducerComponent("PokemonImage");
 
 let se = ReasonReact.stringToElement;
 
-let make = (~sprites: Pokemon.sprites, _children) => {
+let make = (~sprites, _children) => {
   ...component,
   initialState: () => {shine: false, flip: false},
   reducer: (action, state) =>
@@ -29,12 +29,12 @@ let make = (~sprites: Pokemon.sprites, _children) => {
       (
         self.state.shine ?
           <div className="ps-PokemonCard__flipper">
-            <img src=sprites.front_shiny alt="pikachu" />
-            <img src=sprites.back_shiny alt="pikachu" />
+            <img src=sprites##front_shiny alt="pikachu" />
+            <img src=sprites##back_shiny alt="pikachu" />
           </div> :
           <div className="ps-PokemonCard__flipper">
-            <img src=sprites.front_default alt="pikachu" />
-            <img src=sprites.back_default alt="pikachu" />
+            <img src=sprites##front_default alt="pikachu" />
+            <img src=sprites##back_default alt="pikachu" />
           </div>
       )
       <div className="ps-PokemonCard__picture-controls">

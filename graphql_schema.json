@@ -480,9 +480,13 @@
               "isDeprecated": false,
               "name": "ability",
               "type": {
-                "kind": "OBJECT",
-                "name": "Ability",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Ability",
+                  "ofType": null
+                }
               }
             }
           ],
@@ -907,9 +911,13 @@
               "isDeprecated": false,
               "name": "type_",
               "type": {
-                "kind": "OBJECT",
-                "name": "Type",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Type",
+                  "ofType": null
+                }
               }
             }
           ],

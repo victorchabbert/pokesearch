@@ -4,30 +4,28 @@ let component = ReasonReact.statelessComponent("PokemonHeader");
 
 let se = ReasonReact.stringToElement;
 
+let typeListToLabel = (types) =>
+  Array.map(
+    (t) =>
+      <Label
+        key=(string_of_int(t##slot))
+        label=(String.capitalize(t##type_##name))
+        color=(Label.getColorFromKeyword(t##type_##name))
+        className="ps-PokemonCard__type"
+      />,
+    types
+  );
+
 let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
   ...component,
-  render: (_self) =>
+  render: (_self) => {
+    let typeList = types;
     <header className="ps-PokemonCard__info">
       <h2 className="ps-PokemonCard__name"> (se(name)) </h2>
       <div className="ps-PokemonCard__types">
-        (
-          types
-          |> List.map(
-               (t: Pokemon.typeItem) =>
-                 <Label
-                   key=(string_of_int(t.slot))
-                   label=(String.capitalize(t.type_.name))
-                   color=(Label.getColorFromKeyword(t.type_.name))
-                   className="ps-PokemonCard__type"
-                 />
-             )
-          |> Array.of_list
-          |> ReasonReact.arrayToElement
-        )
+        (typeListToLabel(typeList) |> ReasonReact.arrayToElement)
       </div>
-      <h3 className="ps-PokemonCard__number">
-        (se("#" ++ PSUtils.leftpad(string_of_int(id), '0', ~len=3)))
-      </h3>
+      <h3 className="ps-PokemonCard__number"> (se("#" ++ PSUtils.leftpad(id, '0', ~len=3))) </h3>
       <div className="ps-PokemonCard__characteristics">
         <div className="ps-PokemonCard__physiognomy">
           <div className="ps-PokemonCard__physiognomy-item">
@@ -79,4 +77,5 @@ let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
         </div>
       </div>
     </header>
+  }
 };

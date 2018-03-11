@@ -4,31 +4,39 @@ let component = ReasonReact.statelessComponent("TabAbilities");
 
 let se = ReasonReact.stringToElement;
 
-let make = (~abilities: list(Pokemon.abilityItem), _children) => {
-  ...component,
-  render: (_self) =>
-    <div className="ps-PokemonCard__tab-scroll">
-      (
-        abilities
-        |> List.map(
-             (pability: Pokemon.abilityItem) => {
-               let hidden =
-                 pability.is_hidden ?
-                   <span className="ps-PokemonCard__ability-title--sub"> (se("hidden")) </span> :
-                   ReasonReact.nullElement;
-               <div key=pability.ability.name className="ps-PokemonCard__ability">
-                 <h4 className="ps-PokemonCard__ability-title">
-                   (se(pability.ability.name))
-                   hidden
-                 </h4>
+let abilityListToBlock = (abilities) =>
+  Array.map(
+    (abilityEntry) => {
+      let hidden =
+        Js.to_bool(abilityEntry##is_hidden) ?
+          <span className="ps-PokemonCard__ability-title--sub"> (se("hidden")) </span> :
+          ReasonReact.nullElement;
+      <div key=abilityEntry##ability##name className="ps-PokemonCard__ability">
+        <h4 className="ps-PokemonCard__ability-title">
+          (se(abilityEntry##ability##name))
+          hidden
+        </h4>
+        (
+          abilityEntry##ability##effect_entries
+          |> Array.map(
+               (effect) =>
                  <p className="ps-PokemonCard__ability-description">
-                   (se(pability.ability.short_effect))
+                   (se(effect##short_effect))
                  </p>
-               </div>
-             }
-           )
-        |> Array.of_list
-        |> ReasonReact.arrayToElement
-      )
+             )
+          |> ReasonReact.arrayToElement
+        )
+      </div>
+    },
+    abilities
+  );
+
+let make = (~abilities, _children) => {
+  ...component,
+  render: (_self) => {
+    let abilityList = abilities;
+    <div className="ps-PokemonCard__tab-scroll">
+      (abilityListToBlock(abilityList) |> ReasonReact.arrayToElement)
     </div>
+  }
 };

@@ -2,21 +2,31 @@ module PokemonQuery = [%graphql
   {|
   query getPokemon($name: String!) {
     pokemon(name: $name) {
-     id,
-     name,
-     weight,
-     height,
-     sprites {
-       front_default,
-       back_default,
-       front_shiny,
-       back_shiny
-     },
-     types {
-       type_ {
-         name
-       }
-     }
+      id,
+      name,
+      weight,
+      height,
+      abilities {
+        is_hidden,
+        ability {
+          name,
+          effect_entries {
+            short_effect
+          }
+        }
+      },
+      sprites {
+        front_default,
+        back_default,
+        front_shiny,
+        back_shiny
+      },
+      types {
+        slot
+        type_ {
+          name
+        }
+      }
     }
   }
 |}
@@ -40,7 +50,7 @@ let make = (_children) => {
              | Failed(error) => <div> (se(error)) </div>
              | Loaded(result) =>
                switch (parse @@ result)##pokemon {
-               | Some(pokemon) => <div> (se(pokemon##name)) </div>
+               | Some(pokemon) => <PokemonCard pokemon />
                | None => <div> (se("Nothing")) </div>
                }
              }
