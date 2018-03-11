@@ -1,18 +1,17 @@
 const fetch = require("node-fetch");
-const baseURL = `https://pokeapi.co/api/v2`;
 
 const resolvers = {
   Query: {
     pokemons: () => fetch(`${baseURL}/pokemon`).then(res => res.json()),
-    pokemon: (parent, { name }) => {
-      return fetch(`${baseURL}/pokemon/${name}`).then(res => res.json());
+    pokemon: (parent, { name }, context) => {
+      return context.Pokemon.getByName(name);
     },
   },
   Abilities: {
-    ability: (parent) => {
+    ability: (parent, args, context) => {
       const ability = parent.ability;
       if (ability && ability.url) {
-        return fetch(ability.url).then(res => res.json());
+        return context.Ability.getByUrl(ability.url);
       }
       return null;
     }
