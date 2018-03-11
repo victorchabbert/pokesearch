@@ -4,9 +4,11 @@
   background: hsl(0, 0%, 100%);
   border-radius: 3px;
   border: 1px solid hsl(0, 0%, 80%);
+  position: relative;
 }
 
 /* Use JS to keep box-shadow when input is active */
+.ps-SearchBar--active,
 .ps-SearchBar:focus,
 .ps-SearchBar:active,
 .ps-SearchBar:hover {
@@ -23,6 +25,33 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   color: hsl(0, 0%, 5%);
-  padding: 0 10px 0 16px;
+  padding: 0 50px 0 16px;
 }
 
+.ps-SearchBar__search-button {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 50px;
+}
+
+.ps-SearchBar__search {
+  width: 20px;
+  position: relative;
+  top: 1px;
+  fill: hsl(0, 0%, 80%);
+  transition: fill 0.2s ease-out;
+}
+
+.ps-SearchBar--active .ps-SearchBar__search,
+.ps-SearchBar:focus .ps-SearchBar__search,
+.ps-SearchBar:active .ps-SearchBar__search,
+.ps-SearchBar:hover .ps-SearchBar__search {
+  fill: hsla(0, 86%, 51%, 1);
+}
