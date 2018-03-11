@@ -38,10 +38,10 @@ let component = ReasonReact.statelessComponent("PokemonContainer");
 
 let se = ReasonReact.stringToElement;
 
-let make = (_children) => {
+let make = (~name, _children) => {
   ...component,
   render: (_self) => {
-    let pokemonQuery = PokemonQuery.make(~name="pikachu", ());
+    let pokemonQuery = PokemonQuery.make(~name, ());
     <Query query=pokemonQuery>
       ...(
            (response, parse) =>
