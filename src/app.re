@@ -52,6 +52,7 @@ let make = (_children) => {
         <PokemonList>
           <PokemonCard key="1" pokemon />
           <PokemonCard key="2" pokemon />
+          <PokemonContainer />
         </PokemonList>
       </section>
     </main>

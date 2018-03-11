@@ -15,10 +15,10 @@ const PokeApiConnector = require("./PokeApiConnector.js");
 const typeDefs = require("./schema.graphql");
 const resolvers = require("./resolvers.js");
 
-const __DEV__ = process.env.NODE_ENV === "development";
+const __PROD__ = process.env.NODE_ENV === "production";
 const __CACHE__ = !process.env.NO_CACHE;
 console.log("ENV:");
-console.log("DEV", __DEV__);
+console.log("PROD", __PROD__);
 console.log("CACHE", __CACHE__);
 
 const schema = makeExecutableSchema({
@@ -49,6 +49,6 @@ const engine = new ApolloEngine({
 });
 
 engine.listen({
-  port: 3000,
+  port: __PROD__ ? 80 : 3001,
   expressApp: app
 });
