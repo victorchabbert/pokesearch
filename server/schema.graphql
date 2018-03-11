@@ -1,0 +1,79 @@
+module.exports = `
+  type Query {
+    pokemons(limit: Int, offset: Int): PokemonList @cacheControl(maxAge: 3600)
+    pokemon(name: String!): Pokemon
+  }
+
+  type PokemonList  {
+    count: Int!
+    results: [PokemonShort!]!
+  }
+
+  type PokemonShort {
+    name: String!
+    url: String!
+  }
+
+  type Pokemon @cacheControl(maxAge: 3600) {
+    id: ID!
+    name: String!
+    height: Int!
+    weight: Int!
+    abilities: [Abilities!]!
+    sprites: Sprites!
+    stats: [Stats!]!
+    types: [Types!]!
+  }
+
+  type Abilities @cacheControl(maxAge: 3600) {
+    is_hidden: Boolean!
+    slot: Int!
+    ability: Ability
+  }
+
+  type Ability {
+    id: ID!
+    name: String!
+    effect_entries: [Effects!]!
+  }
+
+  type Effects {
+    effect: String!
+    short_effect: String!
+    language: Language!
+  }
+
+  type Sprites {
+    front_default: String!
+    front_shiny: String!
+    front_female: String!
+    front_shiny_female: String!
+    back_default: String!
+    back_shiny: String!
+    back_female: String!
+    back_shiny_female: String!
+  }
+
+  type Stats {
+    effort: Int!
+    base_stat: Int!
+    stat: Stat!
+  }
+
+  type Stat {
+    name: String!
+  }
+
+  type Types @cacheControl(maxAge: 3600) {
+    slot: Int!
+    type_: Type
+  }
+
+  type Type {
+    name: String!
+  }
+
+  type Language {
+    name: String!
+  }
+`;
