@@ -20,7 +20,7 @@ let abilityListToBlock = (abilities) =>
           abilityEntry##ability##effect_entries
           |> Array.map(
                (effect) =>
-                 <p className="ps-PokemonCard__ability-description">
+                 <p key=effect##short_effect className="ps-PokemonCard__ability-description">
                    (se(effect##short_effect))
                  </p>
              )
