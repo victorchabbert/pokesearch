@@ -39,7 +39,7 @@ let make = (_children) => {
              | Loading => <div> (se("Loading")) </div>
              | Failed(error) => <div> (se(error)) </div>
              | Loaded(result) =>
-               switch parse(result)##pokemon {
+               switch (parse @@ result)##pokemon {
                | Some(pokemon) => <div> (se(pokemon##name)) </div>
                | None => <div> (se("Nothing")) </div>
                }
