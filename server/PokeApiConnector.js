@@ -1,3 +1,5 @@
+const __CACHE__ = !process.env.NO_CACHE;
+
 const fetch = require("node-fetch");
 const DataLoader = require("dataloader");
 
@@ -8,7 +10,8 @@ const cache = {};
 module.exports = class PokeApiConnector {
   constructor() {
     this.loader = new DataLoader(this.fetch.bind(this), {
-      batch: false
+      batch: false,
+      cache: __CACHE__
     });
   }
 
@@ -16,7 +19,6 @@ module.exports = class PokeApiConnector {
     return Promise.all(urls.map(url => {
       const cachedRes = cache[url];
 
-      console.log("cache:", url, cachedRes);
       if (!!cachedRes) {
         return new Promise((resolve, reject) => {
           resolve(cachedRes);
@@ -27,7 +29,10 @@ module.exports = class PokeApiConnector {
         fetch(url)
           .then(res => res.json())
           .then(res => {
-            cache[url] = res;
+            if (__CACHE__) {
+              cache[url] = res;
+            }
+
             resolve(res);
           })
           .catch(error => {

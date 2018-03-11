@@ -15,6 +15,12 @@ const PokeApiConnector = require("./PokeApiConnector.js");
 const typeDefs = require("./schema.graphql");
 const resolvers = require("./resolvers.js");
 
+const __DEV__ = process.env.NODE_ENV === "development";
+const __CACHE__ = !process.env.NO_CACHE;
+console.log("ENV:");
+console.log("DEV", __DEV__);
+console.log("CACHE", __CACHE__);
+
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers
@@ -33,7 +39,7 @@ app.use("/graphql", bodyParser.json(), graphqlExpress({
   schema,
   context,
   tracing: true,
-  cacheControl: true
+  cacheControl: __CACHE__
 }));
 
 app.use("/playground", expressPlayground({ endpoint: "/graphql" }));
@@ -42,7 +48,6 @@ const engine = new ApolloEngine({
   apiKey: process.env.ENGINE_API
 });
 
-// app.listen(4000, () => console.log(`Server listening on port 4000`));
 engine.listen({
   port: 3000,
   expressApp: app
