@@ -22,7 +22,7 @@ module.exports = `
     abilities: [Abilities!]!
     sprites: Sprites!
     stats: [Stats!]!
-    types: [Types!]!
+    types(sort: Direction): [Types!]!
   }
 
   type Abilities @cacheControl(maxAge: 3600) {
@@ -75,5 +75,15 @@ module.exports = `
 
   type Language {
     name: String!
+  }
+
+  type Order {
+    field: String!
+    direction: Direction!
+  }
+
+  enum Direction {
+    ASC
+    DESC
   }
 `;

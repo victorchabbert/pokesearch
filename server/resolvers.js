@@ -12,6 +12,16 @@ const resolvers = {
       return context.Pokemon.getByName(name);
     },
   },
+  Pokemon: {
+    types: (parent, {sort}) => {
+      if (!parent.types) {
+        return parent.types;
+      }
+
+      const compare = sort === "DESC" ? (a, b) => b.slot - a.slot : (a, b) => a.slot - b.slot;
+      return parent.types.sort(compare);
+    }
+  },
   Abilities: {
     ability: (parent, args, context) => {
       const ability = parent.ability;
