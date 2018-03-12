@@ -16,6 +16,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "frappe-charts": "^1.0.0",
+    "fuse.js": "^3.2.0",
     "graphql": "0.13.0",
     "graphql-playground-middleware-express": "^1.5.7",
     "graphql-tag": "^2.8.0",

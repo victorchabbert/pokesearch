@@ -1,6 +1,6 @@
 module.exports = `
   type Query {
-    pokemons(limit: Int, offset: Int): PokemonList @cacheControl(maxAge: 3600)
+    pokemons(search: String, limit: Int, offset: Int): PokemonList @cacheControl(maxAge: 3600)
     pokemon(name: String!): Pokemon
   }
 
