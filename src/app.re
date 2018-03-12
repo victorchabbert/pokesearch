@@ -29,13 +29,16 @@ let make = (_children) => {
       </h1>
       <section className="ps-Pokesearch">
         <Header> <SearchBar onChange=(updateSearch(self.send)) key="searchbar" /> </Header>
-        <PokemonList>
-          <PokemonContainer key="abra" name="abra" />
-          <PokemonContainer key="pikachu" name="pikachu" />
-          <PokemonContainer key="zubat" name="zubat" />
-          <PokemonContainer key="baltoy" name="baltoy" />
-          <PokemonContainer key="shedinja" name="shedinja" />
-        </PokemonList>
+        <PokemonListContainer search=self.state.search />
       </section>
     </main>
 };
+/*
+ <PokemonList>
+   <PokemonContainer key="abra" name="abra" />
+   <PokemonContainer key="pikachu" name="pikachu" />
+   <PokemonContainer key="zubat" name="zubat" />
+   <PokemonContainer key="baltoy" name="baltoy" />
+   <PokemonContainer key="shedinja" name="shedinja" />
+ </PokemonList>
+ */
