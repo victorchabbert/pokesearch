@@ -1,19 +1,34 @@
 [%bs.raw {|require('./app.css')|}];
 
-let component = ReasonReact.statelessComponent("App");
+type state = {search: string};
+
+type action =
+  | ChangeValue(string);
+
+let component = ReasonReact.reducerComponent("App");
 
 let se = ReasonReact.stringToElement;
 
+let updateSearch = (send) => {
+  let update = PSUtils.Debounce.make((newValue) => send(ChangeValue(newValue)), ~wait=250);
+  (newValue) => update |> PSUtils.Debounce.call(newValue)
+};
+
 let make = (_children) => {
   ...component,
-  render: (_self) =>
+  initialState: () => {search: ""},
+  reducer: (action, _state) =>
+    switch action {
+    | ChangeValue(value) => ReasonReact.Update({search: value})
+    },
+  render: (self) =>
     <main className="ps-app">
       <h1 className="ps-title">
         <span className="ps-title--red"> (se("Poke")) </span>
         (se("search"))
       </h1>
       <section className="ps-Pokesearch">
-        <Header> <SearchBar key="searchbar" /> </Header>
+        <Header> <SearchBar onChange=(updateSearch(self.send)) key="searchbar" /> </Header>
         <PokemonList>
           <PokemonContainer key="abra" name="abra" />
           <PokemonContainer key="pikachu" name="pikachu" />

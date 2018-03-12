@@ -1,20 +1,25 @@
 [%bs.raw {|require('./searchBar.css')|}];
 
-type state = {focused: bool};
+type state = {
+  focused: bool,
+  value: string
+};
 
 type action =
   | Focus
-  | Blur;
+  | Blur
+  | ChangeValue(string);
 
 let component = ReasonReact.reducerComponent("SearchBar");
 
-let make = (_children) => {
+let make = (~onChange: string => unit, _children) => {
   ...component,
-  initialState: () => {focused: false},
+  initialState: () => {focused: false, value: ""},
   reducer: (action, state) =>
     switch action {
-    | Focus => ReasonReact.Update({focused: true})
-    | Blur => ReasonReact.Update({focused: false})
+    | Focus => ReasonReact.Update({...state, focused: true})
+    | Blur => ReasonReact.Update({...state, focused: false})
+    | ChangeValue(value) => ReasonReact.Update({...state, value})
     },
   render: (self) => {
     let focused =
@@ -25,6 +30,13 @@ let make = (_children) => {
         _type="search"
         onFocus=((_e) => self.send(Focus))
         onBlur=((_e) => self.send(Blur))
+        onChange=(
+          (e) => {
+            let value = ReactDOMRe.domElementToObj(ReactEventRe.Form.target(e))##value;
+            self.send(ChangeValue(value));
+            onChange(value)
+          }
+        )
       />
       <button className="ps-SearchBar__search-button">
         <svg
