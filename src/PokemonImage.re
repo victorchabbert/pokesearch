@@ -52,8 +52,13 @@ let make = (~sprites, _children) => {
             />
           </svg>
           <span
-            onClick=((_e) => self.send(ToggleShine))
-            className="ps-label ps-label--black ps-PokemonCard__control-label">
+            onClick=(
+              (e) => {
+                ReactEventRe.Synthetic.stopPropagation(e);
+                self.send(ToggleShine)
+              }
+            )
+            className="ps-label ps--black ps-PokemonCard__control-label">
             (se("Shiny"))
           </span>
         </div>
@@ -67,8 +72,13 @@ let make = (~sprites, _children) => {
             />
           </svg>
           <span
-            onClick=((_e) => self.send(ToggleFlip))
-            className="ps-label ps-label--black ps-PokemonCard__control-label">
+            onClick=(
+              (e) => {
+                ReactEventRe.Synthetic.stopPropagation(e);
+                self.send(ToggleFlip)
+              }
+            )
+            className="ps-label ps--black ps-PokemonCard__control-label">
             (se("Flip"))
           </span>
         </div>

@@ -1,8 +1,12 @@
 [%bs.raw {|require("./pokemonCard.css")|}];
 
-type state = {active: int};
+type state = {
+  active: int,
+  expanded: bool
+};
 
 type action =
+  | ToggleExpansion
   | ChangeTab(int);
 
 let tabList = [|"Abilities", "Statistics", "Feed", "Impressions"|];
@@ -17,13 +21,14 @@ let accentBar = (types) => {
   <div className=("ps-PokemonCard__bar " ++ colorClass) />
 };
 
-let make = (~pokemon, ~expand=false, _children) => {
+let make = (~pokemon, _children) => {
   ...component,
-  initialState: () => {active: 0},
+  initialState: () => {active: 0, expanded: false},
   reducer: (action, state) =>
     switch action {
     | ChangeTab(active) =>
-      active != state.active ? ReasonReact.Update({active: active}) : ReasonReact.NoUpdate
+      active != state.active ? ReasonReact.Update({...state, active}) : ReasonReact.NoUpdate
+    | ToggleExpansion => ReasonReact.Update({...state, expanded: ! state.expanded})
     },
   render: (self) => {
     let activeTab =
@@ -33,15 +38,17 @@ let make = (~pokemon, ~expand=false, _children) => {
       | "Feed" => <TabFeed name=pokemon##name />
       | _ => ReasonReact.nullElement
       };
-    <article className=((expand ? "" : "ps-PokemonCard--short ") ++ "ps-PokemonCard")>
-      <PokemonImage sprites=pokemon##sprites />
-      <PokemonHeader
-        name=pokemon##name
-        types=pokemon##types
-        height=pokemon##height
-        weight=pokemon##weight
-        id=pokemon##id
-      />
+    <article className=((self.state.expanded ? "" : "ps-PokemonCard--short ") ++ "ps-PokemonCard")>
+      <div className="ps-PokemonCard__header" onClick=((_e) => self.send(ToggleExpansion))>
+        <PokemonImage sprites=pokemon##sprites />
+        <PokemonHeader
+          name=pokemon##name
+          types=pokemon##types
+          height=pokemon##height
+          weight=pokemon##weight
+          id=pokemon##id
+        />
+      </div>
       <section className="ps-PokemonCard__details">
         <Tabs>
           (

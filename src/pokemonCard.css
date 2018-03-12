@@ -20,7 +20,11 @@
 
 .ps-PokemonCard--short {
   max-height: 100px;
+}
+
+.ps-PokemonCard__header {
   cursor: pointer;
+  display: flex;
 }
 
 .ps-PokemonCard__details {
