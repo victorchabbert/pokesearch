@@ -28,7 +28,7 @@ let make = (~search=?, _children) => {
              (response, parse) =>
                switch response {
                | Loading => <div> (se("Loading...")) </div>
-               | Failed(error) => <div> (se(error)) </div>
+               | Failed(_error) => ReasonReact.nullElement
                | Loaded(result) =>
                  switch (parse @@ result)##pokemons {
                  | Some(pokemons) =>

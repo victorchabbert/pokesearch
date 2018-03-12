@@ -46,7 +46,7 @@ let make = (~name, _children) => {
       ...(
            (response, parse) =>
              switch response {
-             | Loading => <div> (se("Loading")) </div>
+             | Loading => <PokemonLoading name />
              | Failed(error) => <div> (se(error)) </div>
              | Loaded(result) =>
                switch (parse @@ result)##pokemon {
