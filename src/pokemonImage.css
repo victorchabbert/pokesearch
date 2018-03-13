@@ -71,6 +71,10 @@
   border-right: 1px solid hsl(0, 0%, 80%);
 }
 
+.ps-PokemonCard__picture-control--disabled {
+  cursor: not-allowed;
+}
+
 .ps-PokemonCard__control-icon {
   fill: hsl(0, 0%, 80%);
   height: 13px;
