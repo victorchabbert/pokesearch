@@ -43,7 +43,7 @@ let make = (~sprites=?, _children) => {
                 |> Array.mapi(
                      (index, sprite) =>
                        switch sprite {
-                       | None => <img alt="empty" key=(string_of_int(index)) />
+                       | None => <PokemonImageEmpty key=(string_of_int(index)) />
                        | Some(spriteLink) => <img key=spriteLink src=spriteLink alt="shiny" />
                        }
                    )
@@ -56,7 +56,7 @@ let make = (~sprites=?, _children) => {
                 |> Array.mapi(
                      (index, sprite) =>
                        switch sprite {
-                       | None => <img alt="empty" key=(string_of_int(index)) />
+                       | None => <PokemonImageEmpty key=(string_of_int(index)) />
                        | Some(spriteLink) => <img key=spriteLink src=spriteLink alt="default" />
                        }
                    )

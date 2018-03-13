@@ -1,0 +1,15 @@
+.ps-PokemonCard__picture-empty {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ps-PokemonCard__picture-empty-logo {
+  width: 20px;
+  fill: hsl(0, 0%, 80%);
+}
