@@ -40,7 +40,7 @@ let make = (~pokemon, _children) => {
       };
     <article className=((self.state.expanded ? "" : "ps-PokemonCard--short ") ++ "ps-PokemonCard")>
       <div className="ps-PokemonCard__header" onClick=((_e) => self.send(ToggleExpansion))>
-        <PokemonImage sprites=pokemon##sprites />
+        <PokemonImage sprites=?pokemon##sprites />
         <PokemonHeader
           name=pokemon##name
           types=pokemon##types

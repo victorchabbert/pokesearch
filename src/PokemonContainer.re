@@ -16,9 +16,9 @@ module PokemonQuery = [%graphql
         }
       },
       sprites {
-        front_default,
-        back_default,
-        front_shiny,
+        front_default
+        back_default
+        front_shiny
         back_shiny
       },
       types {
