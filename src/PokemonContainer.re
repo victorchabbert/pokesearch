@@ -15,6 +15,12 @@ module PokemonQuery = [%graphql
           }
         }
       },
+      stats {
+        base_stat
+        stat {
+          name
+        },
+      },
       sprites {
         front_default
         back_default

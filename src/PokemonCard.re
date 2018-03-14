@@ -1,5 +1,23 @@
 [%bs.raw {|require("./pokemonCard.css")|}];
 
+let formatOptions = (stats) => {
+  let labels =
+    Js.Array.reduce((labelsList, statObj) => [statObj##stat##name, ...labelsList], [], stats)
+    |> List.rev;
+  let baseStatsValues: list(int) =
+    Js.Array.reduce((statList, statObj) => [statObj##base_stat, ...statList], [], stats)
+    |> List.rev;
+  let baseStats =
+    FrappeCharts.makeDataEntry(
+      ~label="Pikachu",
+      ~_type="bar",
+      ~values=baseStatsValues |> Array.of_list,
+      ()
+    );
+  let data = FrappeCharts.makeData(~labels=labels |> Array.of_list, ~datasets=[|baseStats|], ());
+  FrappeCharts.makeOptions(~_type="bar", ~height=190, ~data, ())
+};
+
 type state = {
   active: int,
   expanded: bool
@@ -34,7 +52,7 @@ let make = (~pokemon, _children) => {
     let activeTab =
       switch tabList[self.state.active] {
       | "Abilities" => <TabAbilities abilities=pokemon##abilities />
-      | "Statistics" => <TabStatistics />
+      | "Statistics" => <TabStatistics chartOptions=(formatOptions(pokemon##stats)) />
       | "Feed" => <TabFeed name=pokemon##name />
       | _ => ReasonReact.nullElement
       };

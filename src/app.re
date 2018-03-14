@@ -36,12 +36,3 @@ let make = (_children) => {
       </section>
     </main>
 };
-/*
- <PokemonList>
-   <PokemonContainer key="abra" name="abra" />
-   <PokemonContainer key="pikachu" name="pikachu" />
-   <PokemonContainer key="zubat" name="zubat" />
-   <PokemonContainer key="baltoy" name="baltoy" />
-   <PokemonContainer key="shedinja" name="shedinja" />
- </PokemonList>
- */
