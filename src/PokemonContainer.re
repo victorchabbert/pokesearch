@@ -49,16 +49,16 @@ let make = (~name, _children) => {
     <Query query=pokemonQuery>
       ...(
            (response, parse) =>
-             switch (response) {
+             switch response {
              | Loading => <PokemonLoading name />
              | Failed(error) => <div> (se(error)) </div>
              | Loaded(result) =>
-               switch ((parse @@ result)##pokemon) {
+               switch (parse @@ result)##pokemon {
                | Some(pokemon) => <PokemonCard pokemon />
                | None => <div> (se("Nothing")) </div>
                }
              }
          )
     </Query>;
-  },
+  }
 };

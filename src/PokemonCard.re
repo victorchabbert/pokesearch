@@ -3,13 +3,13 @@
 type schema = {
   .
   "name": array(string),
-  "base_stat": array(string),
+  "base_stat": array(string)
 };
 
 type schemaResponse = {
   .
   "name": array(string),
-  "base_stat": array(int),
+  "base_stat": array(int)
 };
 
 [@bs.module]
@@ -17,22 +17,26 @@ external reshaper : (array('a), schema) => schemaResponse = "reshaper";
 
 let formatOptions = stats => {
   let schema: schema = {"name": [|"String"|], "base_stat": [|"Number"|]};
-  let data = reshaper(stats, schema);
+  let pokemonData = reshaper(stats, schema);
   let baseStats =
     FrappeCharts.makeDataEntry(
       ~label="Pikachu",
       ~_type="bar",
-      ~values=data##base_stat,
-      (),
+      ~values=pokemonData##base_stat,
+      ()
     );
   let data =
-    FrappeCharts.makeData(~labels=data##name, ~datasets=[|baseStats|], ());
+    FrappeCharts.makeData(
+      ~labels=pokemonData##name,
+      ~datasets=[|baseStats|],
+      ()
+    );
   FrappeCharts.makeOptions(~_type="bar", ~height=190, ~data, ());
 };
 
 type state = {
   active: int,
-  expanded: bool,
+  expanded: bool
 };
 
 type action =
@@ -55,7 +59,7 @@ let make = (~pokemon, _children) => {
   ...component,
   initialState: () => {active: 0, expanded: false},
   reducer: (action, state) =>
-    switch (action) {
+    switch action {
     | ChangeTab(active) =>
       active != state.active ?
         ReasonReact.Update({...state, active}) : ReasonReact.NoUpdate
@@ -64,7 +68,7 @@ let make = (~pokemon, _children) => {
     },
   render: self => {
     let activeTab =
-      switch (tabList[self.state.active]) {
+      switch tabList[self.state.active] {
       | "Abilities" => <TabAbilities abilities=pokemon##abilities />
       | "Statistics" =>
         <TabStatistics chartOptions=(formatOptions(pokemon##stats)) />
@@ -107,5 +111,5 @@ let make = (~pokemon, _children) => {
       </section>
       (accentBar(pokemon##types))
     </article>;
-  },
+  }
 };
