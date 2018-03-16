@@ -25,7 +25,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reason-apollo": "^0.6.18",
-    "reason-scripts": "0.8.0"
+    "reason-scripts": "0.8.0",
+    "reshaper": "^0.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

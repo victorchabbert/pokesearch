@@ -749,33 +749,6 @@
               "deprecationReason": null
             },
             {
-              "name": "stat",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Stat",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Stat",
-          "description": "",
-          "fields": [
-            {
               "name": "name",
               "description": "",
               "args": [],
@@ -1849,9 +1822,9 @@
   "extensions": {
     "tracing": {
       "version": 1,
-      "startTime": "2018-03-13T11:44:52.829Z",
-      "endTime": "2018-03-13T11:44:52.841Z",
-      "duration": 11207548,
+      "startTime": "2018-03-16T17:56:34.160Z",
+      "endTime": "2018-03-16T17:56:34.171Z",
+      "duration": 11055475,
       "execution": {
         "resolvers": []
       }
