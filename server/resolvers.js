@@ -20,13 +20,6 @@ const resolvers = {
 
       const compare = sort === "DESC" ? (a, b) => b.slot - a.slot : (a, b) => a.slot - b.slot;
       return parent.types.sort(compare);
-    },
-    stats: (parent) => {
-      if (!parent.stats) {
-        return parent.stats;
-      }
-
-      return parent.stats.reverse();
     }
   },
   Abilities: {

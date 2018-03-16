@@ -57,10 +57,6 @@ module.exports = `
   type Stats {
     effort: Int!
     base_stat: Int!
-    stat: Stat!
-  }
-
-  type Stat {
     name: String!
   }
 
