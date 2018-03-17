@@ -18,6 +18,7 @@
     "frappe-charts": "^1.0.0",
     "fuse.js": "^3.2.0",
     "graphql": "0.13.0",
+    "graphql-iso-date": "^3.5.0",
     "graphql-playground-middleware-express": "^1.5.7",
     "graphql-tag": "^2.8.0",
     "graphql-tools": "^2.21.0",
@@ -34,15 +35,18 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prepare": "npm link bs-platform",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "knex": "knex --knexfile ./server/knexfile.js"
   },
   "devDependencies": {
     "bs-jest": "^0.3.2",
     "graphql_ppx": "^0.2.1",
     "husky": "^0.14.3",
+    "knex": "^0.14.4",
     "lint-staged": "^7.0.0",
     "node-fetch": "^2.1.1",
-    "reason-react": "^0.3.2"
+    "reason-react": "^0.3.2",
+    "sqlite3": "^4.0.0"
   },
   "lint-staged": {
     "*.{re,rei,ml,mli}": [

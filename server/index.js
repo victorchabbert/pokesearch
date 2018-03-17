@@ -10,7 +10,10 @@ const { ApolloEngine } = require("apollo-engine");
 
 const Pokemon = require("./models/Pokemon.js");
 const Ability = require("./models/Ability.js");
+const UserPreferences = require("./models/UserPreferences.js");
+
 const PokeApiConnector = require("./PokeApiConnector.js");
+const userPreferencesConnector = require("./UserPreferencesConnector.js");
 
 const typeDefs = require("./schema.graphql");
 const resolvers = require("./resolvers.js");
@@ -30,8 +33,9 @@ const pokeApiConnector = new PokeApiConnector();
 
 const context = {
   Pokemon: new Pokemon({ connector: pokeApiConnector }),
-  Ability: new Ability({ connector: pokeApiConnector })
-}
+  Ability: new Ability({ connector: pokeApiConnector }),
+  UserPreferences: UserPreferences({ connector: userPreferencesConnector }),
+};
 
 const app = express();
 

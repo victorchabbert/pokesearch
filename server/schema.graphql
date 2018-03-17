@@ -23,6 +23,7 @@ module.exports = `
     sprites: Sprites
     stats: [Stats!]!
     types(sort: Direction): [Types!]!
+    likes: [Likes]!
   }
 
   type Abilities @cacheControl(maxAge: 3600) {
@@ -76,6 +77,14 @@ module.exports = `
   type Order {
     field: String!
     direction: Direction!
+  }
+
+  scalar DateTime
+
+  type Likes {
+    id: ID!
+    disliked: Boolean!
+    likedAt: DateTime!
   }
 
   enum Direction {

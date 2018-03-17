@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const GraphQLDateTime = require("graphql-iso-date").GraphQLDateTime;
 
 const resolvers = {
   Query: {
@@ -20,6 +21,11 @@ const resolvers = {
 
       const compare = sort === "DESC" ? (a, b) => b.slot - a.slot : (a, b) => a.slot - b.slot;
       return parent.types.sort(compare);
+    },
+    likes: (parent, _args, context) => {
+      const id = parent.id;
+
+      return context.UserPreferences.likes.load(id);
     }
   },
   Abilities: {
@@ -33,7 +39,8 @@ const resolvers = {
   },
   Types: {
     type_: (parent) => parent.type
-  }
+  },
+  DateTime: GraphQLDateTime
 };
 
 module.exports = resolvers;

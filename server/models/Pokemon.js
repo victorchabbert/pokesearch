@@ -1,5 +1,5 @@
 const Fuse = require("fuse.js");
-const flattenStatObject = require("../utils/flattenStats.js");
+const flattenKeyName = require("../utils/flattenKeyName.js");
 
 module.exports = class Pokemon {
   constructor({ connector }) {
@@ -43,7 +43,7 @@ module.exports = class Pokemon {
       .then(res => {
         let stats = res.stats;
         if (stats) {
-          stats = stats.map(stat => flattenStatObject(stat));
+          stats = stats.map(stat => flattenKeyName(stat, "stat"));
         }
         
         res.stats = stats;
