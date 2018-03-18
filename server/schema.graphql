@@ -23,7 +23,7 @@ module.exports = `
     sprites: Sprites
     stats: [Stats!]!
     types(sort: Direction): [Types!]!
-    likes: [Likes]!
+    likes: [Likes!]!
   }
 
   type Abilities @cacheControl(maxAge: 3600) {

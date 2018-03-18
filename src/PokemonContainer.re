@@ -30,6 +30,11 @@ module PokemonQuery = [%graphql
         type_ {
           name
         }
+      },
+      likes {
+        id
+        disliked
+        likedAt
       }
     }
   }

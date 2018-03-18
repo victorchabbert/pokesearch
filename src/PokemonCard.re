@@ -73,6 +73,7 @@ let make = (~pokemon, _children) => {
       | "Statistics" =>
         <TabStatistics chartOptions=(formatOptions(pokemon##stats)) />
       | "Feed" => <TabFeed name=pokemon##name />
+      | "Impressions" => <TabImpressions likes=pokemon##likes />
       | _ => ReasonReact.nullElement
       };
     <article
