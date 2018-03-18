@@ -1,4 +1,9 @@
-type dataObject = {. "__typename": string, "id": string, "results": array(Js.t({.}))};
+type dataObject = {
+  .
+  "__typename": string,
+  "id": string,
+  "results": array(Js.t({.}))
+};
 
 let dataIdFromObject = (obj: dataObject) =>
   switch obj##__typename {
@@ -9,15 +14,30 @@ let dataIdFromObject = (obj: dataObject) =>
 
 let cache = ApolloInMemoryCache.createInMemoryCache(~dataIdFromObject, ());
 
-let isProduction = Js.to_bool([%bs.raw {|process.env.NODE_ENV === "production"|}]);
-
 let uri = "/graphql";
 
 let httpLink = ApolloLinks.createHttpLink(~uri, ());
 
+let contextHandler = () => {
+  let _token = Authentication.getOrMakeToken();
+  let headers = {
+    "headers": {
+      "user_token": {j|12345|j}
+    }
+  };
+  headers;
+};
+
+let authLink = ApolloLinks.createContextLink(contextHandler);
+
 module Client =
   ReasonApollo.CreateClient(
     {
-      let apolloClient = ReasonApollo.createApolloClient(~cache, ~link=httpLink, ());
+      let apolloClient =
+        ReasonApollo.createApolloClient(
+          ~cache,
+          ~link=ApolloLinks.from([|authLink, httpLink|]),
+          ()
+        );
     }
   );
