@@ -74,10 +74,7 @@ const engine = new ApolloEngine({
   apiKey: process.env.ENGINE_API
 });
 
-app.listen(3001, () => console.log("running"));
-/*
 engine.listen({
   port: __PROD__ ? 80 : 3001,
   expressApp: app
 });
-*/
