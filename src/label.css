@@ -1,5 +1,5 @@
 .ps-label {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 10px;
   letter-spacing: 1px;
@@ -20,67 +20,67 @@
 
 .ps--light_red {
   color: hsl(0, 0%, 100%);
-  background: #F08030;
+  background: #f08030;
 }
 
 .ps--red {
   color: hsl(0, 0%, 100%);
-  background: #C03028;
+  background: #c03028;
 }
 
 .ps--blue {
   color: hsl(0, 0%, 100%);
-  background: #6890F0;
+  background: #6890f0;
 }
 
 .ps--light_purple {
   color: hsl(0, 0%, 100%);
-  background: #A890F0;
+  background: #a890f0;
 }
 
 .ps--green {
   color: hsl(0, 0%, 100%);
-  background: #78C850;
+  background: #78c850;
 }
 
 .ps--mauve {
   color: hsl(0, 0%, 100%);
-  background: #A040A0;
+  background: #a040a0;
 }
 
 .ps--yellow {
   color: hsl(0, 0%, 100%);
-  background: #F8D030;
+  background: #f8d030;
 }
 
 .ps--wheat {
   color: hsl(0, 0%, 100%);
-  background: #E0C068;
+  background: #e0c068;
 }
 
 .ps--dark_pink {
   color: hsl(0, 0%, 100%);
-  background: #F85888;
+  background: #f85888;
 }
 
 .ps--brown {
   color: hsl(0, 0%, 100%);
-  background: #B8A038;
+  background: #b8a038;
 }
 
 .ps--light_blue {
   color: hsl(0, 0%, 100%);
-  background: #98D8D8;
+  background: #98d8d8;
 }
 
 .ps--kaki {
   color: hsl(0, 0%, 100%);
-  background: #A8B820;
+  background: #a8b820;
 }
 
 .ps--purple {
   color: hsl(0, 0%, 100%);
-  background: #7038F8;
+  background: #7038f8;
 }
 
 .ps--wine {
@@ -95,16 +95,15 @@
 
 .ps--grey {
   color: hsl(0, 0%, 100%);
-  background: #B8B8D0;
+  background: #b8b8d0;
 }
 
 .ps--pink {
   color: hsl(0, 0%, 100%);
-  background: #EE99AC;
+  background: #ee99ac;
 }
 
 .ps--turquoise {
   color: hsl(0, 0%, 100%);
-  background: #68A090;
+  background: #68a090;
 }
-

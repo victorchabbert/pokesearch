@@ -2,14 +2,16 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: hsla(0, 0%, 98%, 1);
   height: 100%;
 }
-

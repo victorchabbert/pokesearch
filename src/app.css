@@ -6,7 +6,7 @@
 }
 
 .ps-title {
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
   font-size: 16px;
   color: hsla(240, 3%, 14%, 1);
   margin: 50px 0 0;
@@ -24,4 +24,3 @@
   position: relative;
   right: -10px;
 }
-

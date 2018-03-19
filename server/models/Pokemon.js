@@ -12,9 +12,7 @@ module.exports = class Pokemon {
       distance: 2,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: [
-        "name",
-      ]
+      keys: ["name"]
     };
 
     console.log("Fetching pokemon list.");
@@ -27,25 +25,26 @@ module.exports = class Pokemon {
 
   searchByName(search, limit = 20, offset = 0) {
     const searchResults = this.fuse.search(search);
-    const results = searchResults.slice(offset, offset + limit)
+    const results = searchResults.slice(offset, offset + limit);
     return {
       count: results.length,
       results
-    }
+    };
   }
 
   getNameList(limit = 20, offset = 0) {
-    return this.connector.get(`/pokemon?limit=${limit}&offset=${offset}`)
+    return this.connector.get(`/pokemon?limit=${limit}&offset=${offset}`);
   }
 
   getByName(name) {
-    return this.connector.get(`/pokemon/${name}`)
+    return this.connector
+      .get(`/pokemon/${name}`)
       .then(res => {
         let stats = res.stats;
         if (stats) {
           stats = stats.map(stat => flattenKeyName(stat, "stat"));
         }
-        
+
         res.stats = stats;
 
         return res;
@@ -68,4 +67,4 @@ module.exports = class Pokemon {
   getAbilityFromUrl(url) {
     return this.connector.get(url);
   }
-}
+};

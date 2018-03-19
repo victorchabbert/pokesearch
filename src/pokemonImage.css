@@ -22,7 +22,6 @@
   position: relative;
 }
 
-
 .ps-PokemonCard__picture img {
   width: 100px;
   height: 100px;
@@ -85,4 +84,3 @@
   position: absolute;
   top: 3px;
 }
-

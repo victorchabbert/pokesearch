@@ -3,7 +3,7 @@ const GraphQLDateTime = require("graphql-iso-date").GraphQLDateTime;
 
 const resolvers = {
   Query: {
-    pokemons: (parent, {search, limit, offset}, context) => {
+    pokemons: (parent, { search, limit, offset }, context) => {
       if (search && search !== "") {
         return context.Pokemon.searchByName(search);
       }
@@ -11,7 +11,7 @@ const resolvers = {
     },
     pokemon: (parent, { name }, context) => {
       return context.Pokemon.getByName(name);
-    },
+    }
   },
   Mutation: {
     likePokemon: async (_parent, { id, name }, context) => {
@@ -24,18 +24,19 @@ const resolvers = {
       const pokemon_id = parseInt(id, 10);
       const liked = await context.UserPreferences.isLikedBy(pokemon_id, userId);
       console.log("liked", liked, +liked);
-      
+
       await context.UserPreferences.likePokemon(pokemon_id, userId, +liked);
       return context.Pokemon.getByName(name);
     }
   },
   Pokemon: {
-    types: (parent, {sort}) => {
+    types: (parent, { sort }) => {
       if (!parent.types) {
         return parent.types;
       }
 
-      const compare = sort === "DESC" ? (a, b) => b.slot - a.slot : (a, b) => a.slot - b.slot;
+      const compare =
+        sort === "DESC" ? (a, b) => b.slot - a.slot : (a, b) => a.slot - b.slot;
       return parent.types.sort(compare);
     },
     likes: (parent, _args, context) => {
@@ -62,9 +63,9 @@ const resolvers = {
     }
   },
   Types: {
-    type_: (parent) => parent.type
+    type_: parent => parent.type
   },
-  DateTime: GraphQLDateTime,
+  DateTime: GraphQLDateTime
 };
 
 module.exports = resolvers;

@@ -11,7 +11,12 @@
   animation-iteration-count: infinite;
   animation-name: loader-animate;
   animation-timing-function: linear;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0) 81%);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    rgba(255, 255, 255, 0) 81%
+  );
 }
 
 @keyframes loader-animate {

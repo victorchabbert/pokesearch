@@ -15,7 +15,7 @@
 
 .ps-PokemonCard:hover,
 .ps-PokemonCard:not(.ps-PokemonCard--short) {
-  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.1)
+  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.1);
 }
 
 .ps-PokemonCard--short {
@@ -62,7 +62,7 @@
 
 .ps-PokemonCard__sidebar-label {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 12px;
   color: hsl(0, 0%, 45%);

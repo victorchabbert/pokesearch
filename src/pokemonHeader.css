@@ -10,7 +10,7 @@
 
 .ps-PokemonCard__name {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   color: hsl(0, 0%, 5%);
 }
@@ -22,7 +22,7 @@
 
 .ps-PokemonCard__number {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: hsl(0, 0%, 5%);
@@ -44,7 +44,6 @@
   flex: 1;
   display: flex;
   flex-flow: row nowrap;
-
 }
 
 .ps-PokemonCard__physiognomy-item {
@@ -66,7 +65,7 @@
 .ps-PokemonCard__physiognomy-value {
   margin: 0;
   margin-left: 10px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   color: hsl(0, 0%, 80%);
 }
@@ -92,5 +91,3 @@
 .ps-PokemonCard__bookmark:hover {
   fill: hsl(28, 87%, 62%);
 }
-
-

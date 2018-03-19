@@ -10,6 +10,6 @@ const flattenKeyName = (object, key) => {
   }
 
   return object;
-}
+};
 
 module.exports = flattenKeyName;

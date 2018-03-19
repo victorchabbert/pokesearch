@@ -1,21 +1,11 @@
 {
   "name": "reason-scripts",
-  "sources": [
-    "src"
-  ],
-  "bs-dependencies": [
-    "reason-react",
-    "reason-apollo",
-    "bs-jest"
-  ],
-  "ppx-flags": [
-    "graphql_ppx/ppx"
-  ],
+  "sources": ["src"],
+  "bs-dependencies": ["reason-react", "reason-apollo", "bs-jest"],
+  "ppx-flags": ["graphql_ppx/ppx"],
   "reason": {
     "react-jsx": 2
   },
-  "bsc-flags": [
-    "-bs-super-errors"
-  ],
+  "bsc-flags": ["-bs-super-errors"],
   "refmt": 3
 }

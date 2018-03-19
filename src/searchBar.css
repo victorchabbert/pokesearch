@@ -12,7 +12,7 @@
 .ps-SearchBar:focus,
 .ps-SearchBar:active,
 .ps-SearchBar:hover {
-  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.1)
+  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.1);
 }
 
 .ps-SearchBar__input {
@@ -22,7 +22,7 @@
   outline: none;
   width: 100%;
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   color: hsl(0, 0%, 5%);
   padding: 0 50px 0 16px;

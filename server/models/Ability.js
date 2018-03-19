@@ -10,5 +10,4 @@ module.exports = class Ability {
   getByUrl(url) {
     return this.connector.getAbsolute(url);
   }
-}
-
+};
