@@ -996,6 +996,20 @@
                     }
                   },
                   "defaultValue": null
+                },
+                {
+                  "name": "name",
+                  "description": "",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
                 }
               ],
               "type": {
@@ -1971,9 +1985,9 @@
   "extensions": {
     "tracing": {
       "version": 1,
-      "startTime": "2018-03-19T10:07:39.824Z",
-      "endTime": "2018-03-19T10:07:39.834Z",
-      "duration": 9611476,
+      "startTime": "2018-03-19T14:48:11.200Z",
+      "endTime": "2018-03-19T14:48:11.213Z",
+      "duration": 13661910,
       "execution": {
         "resolvers": []
       }

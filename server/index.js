@@ -51,7 +51,6 @@ const app = express();
 app.use((req, res, next) => {
   let token = req.get("user_token");
   if (token) {
-    console.log("user_token", token);
     req.user_token = token;
   }
   next();

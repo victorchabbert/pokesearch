@@ -19,13 +19,11 @@ module.exports = ({ connector }) => {
 
   const isLikedByDataloader = (pokemonId, userId) => likesReverseDataloader.load(pokemonId)
     .then(res => res.find((like) => like.user === userId))
-    .then(res => { console.log("isLikedBy", res); return res; })
     .then(res => !!res ? !res.disliked : false);
 
   const likePokemon = (pokemon_id, user, disliked) => connector
     .insert({pokemon_id, user, disliked , likedAt: new Date().toISOString()}).into('likes')
     .then(_id => {
-      console.log("likes, pkm id", pokemon_id, typeof pokemon_id)
       likesReverseDataloader.clear(pokemon_id);
       likesDataloader.clear(pokemon_id);
       return disliked;
