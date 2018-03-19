@@ -84,6 +84,7 @@
   fill: hsl(0, 0%, 80%);
 }
 
+.ps-PokemonCard__heart--active,
 .ps-PokemonCard__heart:hover {
   fill: hsl(0, 86%, 51%);
 }

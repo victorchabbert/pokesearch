@@ -37,14 +37,32 @@ const context = {
   UserPreferences: UserPreferences({ connector: userPreferencesConnector }),
 };
 
+const updateContext = (user_token) => {
+  if (!user_token || user_token === context.user_token) {
+    return context;
+  }
+  return Object.assign(context, {
+    user_token
+  });
+}
+
 const app = express();
 
-app.use("/graphql", bodyParser.json(), graphqlExpress({
+app.use((req, res, next) => {
+  let token = req.get("user_token");
+  if (token) {
+    console.log("user_token", token);
+    req.user_token = token;
+  }
+  next();
+});
+
+app.use("/graphql", bodyParser.json(), graphqlExpress(req => ( {
   schema,
-  context,
+  context: updateContext(req.user_token),
   tracing: true,
   cacheControl: __CACHE__
-}));
+} )));
 
 app.use("/playground", expressPlayground({ endpoint: "/graphql" }));
 

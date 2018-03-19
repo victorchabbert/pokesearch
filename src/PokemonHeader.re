@@ -4,9 +4,9 @@ let component = ReasonReact.statelessComponent("PokemonHeader");
 
 let se = ReasonReact.stringToElement;
 
-let typeListToLabel = (types) =>
+let typeListToLabel = types =>
   Array.map(
-    (t) =>
+    t =>
       <Label
         key=(string_of_int(t##slot))
         label=(String.capitalize(t##type_##name))
@@ -16,16 +16,18 @@ let typeListToLabel = (types) =>
     types
   );
 
-let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
+let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
   ...component,
-  render: (_self) => {
+  render: _self => {
     let typeList = types;
     <header className="ps-PokemonCard__info">
       <h2 className="ps-PokemonCard__name"> (se(name)) </h2>
       <div className="ps-PokemonCard__types">
         (typeListToLabel(typeList) |> ReasonReact.arrayToElement)
       </div>
-      <h3 className="ps-PokemonCard__number"> (se("#" ++ PSUtils.leftpad(id, '0', ~len=3))) </h3>
+      <h3 className="ps-PokemonCard__number">
+        (se("#" ++ PSUtils.leftpad(id, '0', ~len=3)))
+      </h3>
       <div className="ps-PokemonCard__characteristics">
         <div className="ps-PokemonCard__physiognomy">
           <div className="ps-PokemonCard__physiognomy-item">
@@ -34,7 +36,10 @@ let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
               (
                 se(
                   (
-                    height |> PSUtils.divideTen |> string_of_float |> PSUtils.appendZeroIfNonNumeric
+                    height
+                    |> PSUtils.divideTen
+                    |> string_of_float
+                    |> PSUtils.appendZeroIfNonNumeric
                   )
                   ++ " m"
                 )
@@ -51,7 +56,10 @@ let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
               (
                 se(
                   (
-                    weight |> PSUtils.divideTen |> string_of_float |> PSUtils.appendZeroIfNonNumeric
+                    weight
+                    |> PSUtils.divideTen
+                    |> string_of_float
+                    |> PSUtils.appendZeroIfNonNumeric
                   )
                   ++ " kg"
                 )
@@ -61,7 +69,13 @@ let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
         </div>
         <div className="ps-PokemonCard__interactions">
           <svg
-            className="ps-PokemonCard__heart"
+            className=(
+              [
+                "ps-PokemonCard__heart",
+                liked ? "ps-PokemonCard__heart--active" : ""
+              ]
+              |> String.concat("\n                       ")
+            )
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20">
             <path
@@ -72,10 +86,12 @@ let make = (~name, ~types, ~height, ~weight, ~id, _children) => {
             className="ps-PokemonCard__bookmark"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20">
-            <path d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4-8 4V2zm2 0v15l6-3 6 3V2H4z" />
+            <path
+              d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4-8 4V2zm2 0v15l6-3 6 3V2H4z"
+            />
           </svg>
         </div>
       </div>
-    </header>
+    </header>;
   }
 };

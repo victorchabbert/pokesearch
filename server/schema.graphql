@@ -4,6 +4,10 @@ module.exports = `
     pokemon(name: String!): Pokemon
   }
 
+  type Mutation {
+    likePokemon(id: ID!, name: String!): Pokemon
+  }
+
   type PokemonList  {
     count: Int!
     results: [PokemonShort!]!
@@ -24,6 +28,7 @@ module.exports = `
     stats: [Stats!]!
     types(sort: Direction): [Types!]!
     likes: [Likes!]!
+    liked: Boolean!
   }
 
   type Abilities @cacheControl(maxAge: 3600) {

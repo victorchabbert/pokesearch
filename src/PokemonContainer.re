@@ -35,7 +35,8 @@ module PokemonQuery = [%graphql
         id
         disliked
         likedAt
-      }
+      },
+      liked
     }
   }
 |}

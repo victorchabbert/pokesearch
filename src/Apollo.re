@@ -19,10 +19,10 @@ let uri = "/graphql";
 let httpLink = ApolloLinks.createHttpLink(~uri, ());
 
 let contextHandler = () => {
-  let _token = Authentication.getOrMakeToken();
+  let token = Authentication.getOrMakeToken();
   let headers = {
     "headers": {
-      "user_token": {j|12345|j}
+      "user_token": {j|$token|j}
     }
   };
   headers;

@@ -4,7 +4,9 @@
       "queryType": {
         "name": "Query"
       },
-      "mutationType": null,
+      "mutationType": {
+        "name": "Mutation"
+      },
       "subscriptionType": null,
       "types": [
         {
@@ -385,6 +387,22 @@
                       "ofType": null
                     }
                   }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "liked",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
@@ -953,6 +971,44 @@
           "fields": null,
           "inputFields": null,
           "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Mutation",
+          "description": "",
+          "fields": [
+            {
+              "name": "likePokemon",
+              "description": "",
+              "args": [
+                {
+                  "name": "id",
+                  "description": "",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Pokemon",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
           "enumValues": null,
           "possibleTypes": null
         },
@@ -1915,9 +1971,9 @@
   "extensions": {
     "tracing": {
       "version": 1,
-      "startTime": "2018-03-18T09:30:05.364Z",
-      "endTime": "2018-03-18T09:30:05.374Z",
-      "duration": 10180928,
+      "startTime": "2018-03-19T10:07:39.824Z",
+      "endTime": "2018-03-19T10:07:39.834Z",
+      "duration": 9611476,
       "execution": {
         "resolvers": []
       }

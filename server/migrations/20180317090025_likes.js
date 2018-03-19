@@ -3,7 +3,8 @@ exports.up = function(knex, Promise) {
     table.increments('id');
     table.integer('pokemon_id');
     table.boolean('disliked').notNull();
-    table.timestamp('likedAt').defaultTo(new Date().toISOString());
+    table.string('user').notNull();
+    table.timestamp('likedAt').notNull();
   });
 };
 

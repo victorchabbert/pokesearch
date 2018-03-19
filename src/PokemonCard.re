@@ -86,6 +86,7 @@ let make = (~pokemon, _children) => {
         onClick=(_e => self.send(ToggleExpansion))>
         <PokemonImage sprites=?pokemon##sprites />
         <PokemonHeader
+          liked=(Js.to_bool(pokemon##liked))
           name=pokemon##name
           types=pokemon##types
           height=pokemon##height
