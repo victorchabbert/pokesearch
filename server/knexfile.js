@@ -9,6 +9,7 @@ module.exports = {
     connection: {
       filename: db
     },
+    useNullAsDefault: false 
   },
 
   production: {

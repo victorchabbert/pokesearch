@@ -6,7 +6,8 @@ const db = knex({
   client: "sqlite3",
   connection: {
     filename: dbPath
-  }
+  },
+  useNullAsDefault: false
 });
 
 module.exports = db;
