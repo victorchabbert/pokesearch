@@ -16,14 +16,15 @@ const resolvers = {
   Mutation: {
     likePokemon: async (_parent, { id, name }, context) => {
       const userId = context.user_token;
+      console.log("userId", userId, typeof userId);
       if (!userId) {
         // TODO: send HTTP 401 error code
         return null;
       }
 
-      const pokemon_id = parseInt(id, 10);
+      const pokemon_id = typeof id === "string" ? parseInt(id, 10) : id;
       const liked = await context.UserPreferences.isLikedBy(pokemon_id, userId);
-      console.log("liked", liked, +liked);
+      console.log(pokemon_id, typeof pokemon_id, "liked", liked, new Date());
 
       await context.UserPreferences.likePokemon(pokemon_id, userId, +liked);
       return context.Pokemon.getByName(name);

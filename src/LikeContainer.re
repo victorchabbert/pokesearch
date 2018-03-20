@@ -3,6 +3,9 @@ module TogglePokemonLike = [%graphql
   mutation togglePokemonLike($id: ID!, $name: String!) {
     likePokemon(id: $id, name: $name) {
       liked
+      likes {
+        likedAt
+      }
     }
   }
 |}
@@ -28,11 +31,10 @@ let make = (~id: string, ~name: string, ~liked: bool, _children) => {
     },
   render: self => {
     let toggleLike = like => self.send(Like(like));
+    let togglePokemonLikeMutation = TogglePokemonLike.make(~id, ~name, ());
     <Mutation>
       ...(
            (mutate, result) => {
-             let togglePokemonLikeMutation =
-               TogglePokemonLike.make(~id, ~name, ());
              switch result {
              | NotCalled => ()
              | Loading => Js.log3("Like loading", id, name)
