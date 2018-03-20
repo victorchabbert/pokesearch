@@ -25,7 +25,9 @@ let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
         (se(name |> PSUtils.unhyphenate |> PSUtils.titlecase))
       </h2>
       <h3 className="ps-PokemonCard__number">
-        (se("#" ++ PSUtils.leftpad(id, '0', ~len=3)))
+        <Link href=("/pokemon/" ++ name)>
+          (se("#" ++ PSUtils.leftpad(id, '0', ~len=3)))
+        </Link>
       </h3>
       <div className="ps-PokemonCard__types">
         (typeListToLabel(typeList) |> ReasonReact.arrayToElement)

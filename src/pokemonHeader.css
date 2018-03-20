@@ -22,13 +22,15 @@
   flex-flow: row nowrap;
 }
 
-.ps-PokemonCard__number {
+.ps-PokemonCard__number,
+.ps-PokemonCard__number * {
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: hsl(0, 0%, 5%);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .ps-PokemonCard__number:hover {
