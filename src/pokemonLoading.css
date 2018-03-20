@@ -1,3 +1,8 @@
+.ps-PokemonCard__name--grey,
+.ps-PokemonCard__number--grey {
+  color: hsl(0, 0%, 80%);
+}
+
 .ps-PokemonCard--loader:after {
   content: "";
   background: #333;
