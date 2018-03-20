@@ -33,7 +33,7 @@ let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
       <div className="ps-PokemonCard__characteristics">
         <div className="ps-PokemonCard__physiognomy">
           <div className="ps-PokemonCard__physiognomy-item">
-            <img src="./img/height.png" alt="height icon" />
+            <img src="/img/height.png" alt="height icon" />
             <p className="ps-PokemonCard__physiognomy-value">
               (
                 se(
