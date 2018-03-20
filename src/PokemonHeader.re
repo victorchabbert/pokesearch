@@ -24,12 +24,12 @@ let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
       <h2 className="ps-PokemonCard__name">
         (se(name |> PSUtils.unhyphenate |> PSUtils.titlecase))
       </h2>
-      <div className="ps-PokemonCard__types">
-        (typeListToLabel(typeList) |> ReasonReact.arrayToElement)
-      </div>
       <h3 className="ps-PokemonCard__number">
         (se("#" ++ PSUtils.leftpad(id, '0', ~len=3)))
       </h3>
+      <div className="ps-PokemonCard__types">
+        (typeListToLabel(typeList) |> ReasonReact.arrayToElement)
+      </div>
       <div className="ps-PokemonCard__characteristics">
         <div className="ps-PokemonCard__physiognomy">
           <div className="ps-PokemonCard__physiognomy-item">
