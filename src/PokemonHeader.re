@@ -21,7 +21,9 @@ let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
   render: _self => {
     let typeList = types;
     <header className="ps-PokemonCard__info">
-      <h2 className="ps-PokemonCard__name"> (se(name)) </h2>
+      <h2 className="ps-PokemonCard__name">
+        (se(name |> PSUtils.unhyphenate |> PSUtils.titlecase))
+      </h2>
       <div className="ps-PokemonCard__types">
         (typeListToLabel(typeList) |> ReasonReact.arrayToElement)
       </div>
