@@ -55,9 +55,9 @@ let accentBar = types => {
   <div className=("ps-PokemonCard__bar " ++ colorClass) />;
 };
 
-let make = (~pokemon, _children) => {
+let make = (~pokemon, ~expanded=false, _children) => {
   ...component,
-  initialState: () => {active: 0, expanded: false},
+  initialState: () => {active: 0, expanded},
   reducer: (action, state) =>
     switch action {
     | ChangeTab(active) =>

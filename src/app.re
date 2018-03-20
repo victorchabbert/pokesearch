@@ -44,7 +44,8 @@ let make = _children => {
                route =>
                  switch route {
                  | Search => <PokemonListContainer search=?self.state.search />
-                 | PokemonDetail([name, ..._rest]) => <PokemonContainer name />
+                 | PokemonDetail([name, ..._rest]) =>
+                   <PokemonContainer name expanded=true />
                  | _ => ReasonReact.nullElement
                  }
              )

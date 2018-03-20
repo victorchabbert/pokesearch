@@ -48,7 +48,7 @@ let component = ReasonReact.statelessComponent("PokemonContainer");
 
 let se = ReasonReact.stringToElement;
 
-let make = (~name, _children) => {
+let make = (~name, ~expanded=false, _children) => {
   ...component,
   render: _self => {
     let pokemonQuery = PokemonQuery.make(~name, ());
@@ -60,7 +60,7 @@ let make = (~name, _children) => {
              | Failed(error) => <div> (se(error)) </div>
              | Loaded(result) =>
                switch (parse @@ result)##pokemon {
-               | Some(pokemon) => <PokemonCard pokemon />
+               | Some(pokemon) => <PokemonCard pokemon expanded />
                | None => <div> (se("Nothing")) </div>
                }
              }
