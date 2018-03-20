@@ -23,7 +23,9 @@ let component = ReasonReact.reducerComponent("Router");
 let make = children => {
   ...component,
   reducer,
-  initialState: () => {route: Search},
+  initialState: () => {
+    route: ReasonReact.Router.dangerouslyGetInitialUrl() |> mapUrlToRoute
+  },
   subscriptions: self => [
     Sub(
       () =>
