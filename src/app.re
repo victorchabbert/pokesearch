@@ -30,10 +30,12 @@ let make = _children => {
     },
   render: self =>
     <main className="ps-app">
-      <h1 className="ps-title">
-        <span className="ps-title--red"> (se("Poke")) </span>
-        (se("search"))
-      </h1>
+      <Link href="/" className="ps-title-href">
+        <h1 className="ps-title">
+          <span className="ps-title--red"> (se("Poke")) </span>
+          (se("search"))
+        </h1>
+      </Link>
       <Link href="/pokemon/pikachu"> (se("pikachu")) </Link>
       <section className="ps-Pokesearch">
         <Header>

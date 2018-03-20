@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+.ps-title-href {
+  text-decoration: none;
+}
+
 .ps-title {
   font-family: "Overpass", sans-serif;
   font-size: 16px;
