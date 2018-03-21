@@ -69,6 +69,10 @@ app.use(
 );
 
 app.use("/playground", expressPlayground({ endpoint: "/graphql" }));
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
 
 const engine = new ApolloEngine({
   apiKey: process.env.ENGINE_API

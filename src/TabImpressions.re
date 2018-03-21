@@ -41,7 +41,6 @@ let makeOptions = likes =>
       ()
     );
   } else {
-    Js.log2("chart", likes);
     let counter = ref(0);
     let likesData: array(likesData) =
       likes
