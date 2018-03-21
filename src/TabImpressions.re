@@ -32,36 +32,45 @@ type likesData = {
   "likedAt": string
 };
 
-let makeOptions = likes => {
-  let counter = ref(0);
-  let likesData: array(likesData) =
-    likes
-    |> Array.map(like => {
-         counter := counter^ + (Js.to_bool(like##disliked) ? (-1) : 1);
-         let date =
-           switch (Js.Json.decodeString(like##likedAt)) {
-           | Some(dateString) => Js.Date.fromString(dateString)
-           | None => Js.Date.fromFloat(Js.Date.now())
-           };
-         {"value": counter^, "likedAt": PSUtils.convertDate(date)};
-       });
-  let schema = {"value": [|"Number"|], "likedAt": [|"String"|]};
-  let dataExtracted = reshaper(likesData, schema);
-  let likesOptions =
-    FrappeCharts.makeDataEntry(
-      ~label="Likes",
+let makeOptions = likes =>
+  if (Array.length(likes) == 0) {
+    FrappeCharts.makeOptions(
       ~_type="line",
-      ~values=dataExtracted##value,
+      ~height=190,
+      ~data=FrappeCharts.makeData(~labels=[|"No data"|], ~datasets=[||], ()),
       ()
     );
-  let data =
-    FrappeCharts.makeData(
-      ~labels=dataExtracted##likedAt,
-      ~datasets=[|likesOptions|],
-      ()
-    );
-  FrappeCharts.makeOptions(~_type="line", ~height=190, ~data, ());
-};
+  } else {
+    Js.log2("chart", likes);
+    let counter = ref(0);
+    let likesData: array(likesData) =
+      likes
+      |> Array.map(like => {
+           counter := counter^ + (Js.to_bool(like##disliked) ? (-1) : 1);
+           let date =
+             switch (Js.Json.decodeString(like##likedAt)) {
+             | Some(dateString) => Js.Date.fromString(dateString)
+             | None => Js.Date.fromFloat(Js.Date.now())
+             };
+           {"value": counter^, "likedAt": PSUtils.convertDate(date)};
+         });
+    let schema = {"value": [|"Number"|], "likedAt": [|"String"|]};
+    let dataExtracted = reshaper(likesData, schema);
+    let likesOptions =
+      FrappeCharts.makeDataEntry(
+        ~label="Likes",
+        ~_type="line",
+        ~values=dataExtracted##value,
+        ()
+      );
+    let data =
+      FrappeCharts.makeData(
+        ~labels=dataExtracted##likedAt,
+        ~datasets=[|likesOptions|],
+        ()
+      );
+    FrappeCharts.makeOptions(~_type="line", ~height=190, ~data, ());
+  };
 
 let component = ReasonReact.reducerComponent("TabImpressions");
 
