@@ -1,0 +1,25 @@
+.ps-BookmarkList {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.ps-BookmarkList__item {
+  text-decoration: none;
+  color: hsl(0, 0%, 45%);
+  cursor: pointer;
+  margin: 5px 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+
+.ps-BookmarkList__item--active,
+.ps-BookmarkList__item:hover {
+  color: hsla(0, 86%, 51%, 1);
+}

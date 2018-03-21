@@ -36,7 +36,6 @@ let make = _children => {
           (se("search"))
         </h1>
       </Link>
-      <Link href="/pokemon/pikachu"> (se("pikachu")) </Link>
       <section className="ps-Pokesearch">
         <Header>
           <SearchBar onChange=(updateSearch(self.send)) key="searchbar" />
@@ -53,5 +52,6 @@ let make = _children => {
              )
         </Router>
       </section>
+      <BookmarkListContainer />
     </main>
 };

@@ -64,9 +64,8 @@ module.exports = ({ connector }) => {
       .load(pokemon_id)
       .then(res => res.find(bookmark => bookmark.user === userId));
 
-  const bookmarkPokemon = (pokemon_id, user, bookmarked) => {
+  const bookmarkPokemon = (pokemon_id, name, user, bookmarked) => {
     if (bookmarked) {
-      console.log("DELETE", bookmarked);
       return connector
         .table("bookmarks")
         .where("pokemon_id", pokemon_id)
@@ -75,18 +74,33 @@ module.exports = ({ connector }) => {
         .then(_id => {
           bookmarksReverseDataloader.clear(pokemon_id);
           bookmarksDataloader.clear(pokemon_id);
+          getUserBookmarks.clear(user);
           return false;
         });
     }
     return connector
-      .insert({ pokemon_id, user, bookmarkedAt: new Date().toISOString() })
+      .insert({
+        pokemon_id,
+        pokemon_name: name,
+        user,
+        bookmarkedAt: new Date().toISOString()
+      })
       .into("bookmarks")
       .then(_id => {
         bookmarksReverseDataloader.clear(pokemon_id);
         bookmarksDataloader.clear(pokemon_id);
+        getUserBookmarks.clear(user);
         return true;
       });
   };
+
+  const getUserBookmarks = new DataLoader(user_ids =>
+    connector
+      .table("bookmarks")
+      .whereIn("user", user_ids)
+      .select()
+      .then(rows => user_ids.map(id => rows.filter(row => row.user === id)))
+  );
 
   return {
     likes: likesDataloader,
@@ -95,6 +109,7 @@ module.exports = ({ connector }) => {
     isLikedBy: isLikedByDataloader,
     likePokemon,
     isBookmarkedBy: isBookmarkedByDataloader,
-    bookmarkPokemon
+    bookmarkPokemon,
+    getUserBookmarks: getUserBookmarks
   };
 };

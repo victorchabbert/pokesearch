@@ -2,6 +2,7 @@ module.exports = `
   type Query {
     pokemons(search: String, limit: Int, offset: Int): PokemonList @cacheControl(maxAge: 3600)
     pokemon(name: String!): Pokemon
+    bookmarks: [PokemonBookmark!]!
   }
 
   type Mutation {
@@ -102,5 +103,11 @@ module.exports = `
   enum Direction {
     ASC
     DESC
+  }
+
+  type PokemonBookmark {
+    id: ID!
+    name: String!
+    bookmarkedAt: DateTime!
   }
 `;
