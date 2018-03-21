@@ -22,16 +22,6 @@ module.exports = ({ connector }) => {
       )
   );
 
-  const bookmarksDataloader = new DataLoader(pokemon_ids =>
-    connector
-      .table("bookmarks")
-      .whereIn("pokemon_id", pokemon_ids)
-      .select()
-      .then(rows =>
-        pokemon_ids.map(id => rows.filter(row => row.pokemon_id === id))
-      )
-  );
-
   const isLikedByDataloader = (pokemonId, userId) =>
     likesReverseDataloader
       .load(pokemonId)
@@ -48,11 +38,63 @@ module.exports = ({ connector }) => {
         return disliked;
       });
 
+  const bookmarksDataloader = new DataLoader(pokemon_ids =>
+    connector
+      .table("bookmarks")
+      .whereIn("pokemon_id", pokemon_ids)
+      .select()
+      .then(rows =>
+        pokemon_ids.map(id => rows.filter(row => row.pokemon_id === id))
+      )
+  );
+
+  const bookmarksReverseDataloader = new DataLoader(pokemon_ids =>
+    connector
+      .table("bookmarks")
+      .whereIn("pokemon_id", pokemon_ids)
+      .orderBy("id", "desc")
+      .select()
+      .then(rows =>
+        pokemon_ids.map(id => rows.filter(row => row.pokemon_id === id))
+      )
+  );
+
+  const isBookmarkedByDataloader = (pokemon_id, userId) =>
+    bookmarksReverseDataloader
+      .load(pokemon_id)
+      .then(res => res.find(bookmark => bookmark.user === userId));
+
+  const bookmarkPokemon = (pokemon_id, user, bookmarked) => {
+    if (bookmarked) {
+      console.log("DELETE", bookmarked);
+      return connector
+        .table("bookmarks")
+        .where("pokemon_id", pokemon_id)
+        .where("user", user)
+        .delete()
+        .then(_id => {
+          bookmarksReverseDataloader.clear(pokemon_id);
+          bookmarksDataloader.clear(pokemon_id);
+          return false;
+        });
+    }
+    return connector
+      .insert({ pokemon_id, user, bookmarkedAt: new Date().toISOString() })
+      .into("bookmarks")
+      .then(_id => {
+        bookmarksReverseDataloader.clear(pokemon_id);
+        bookmarksDataloader.clear(pokemon_id);
+        return true;
+      });
+  };
+
   return {
     likes: likesDataloader,
     likesReverse: likesReverseDataloader,
     bookmarks: bookmarksDataloader,
     isLikedBy: isLikedByDataloader,
-    likePokemon: likePokemon
+    likePokemon,
+    isBookmarkedBy: isBookmarkedByDataloader,
+    bookmarkPokemon
   };
 };

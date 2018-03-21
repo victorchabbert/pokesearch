@@ -16,7 +16,17 @@ let typeListToLabel = types =>
     types
   );
 
-let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
+let make =
+    (
+      ~name,
+      ~types,
+      ~height,
+      ~weight,
+      ~id,
+      ~liked: bool,
+      ~bookmarked,
+      _children
+    ) => {
   ...component,
   render: _self => {
     let typeList = types;
@@ -73,14 +83,7 @@ let make = (~name, ~types, ~height, ~weight, ~id, ~liked: bool, _children) => {
         </div>
         <div className="ps-PokemonCard__interactions">
           <LikeContainer id name liked />
-          <svg
-            className="ps-PokemonCard__bookmark"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20">
-            <path
-              d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4-8 4V2zm2 0v15l6-3 6 3V2H4z"
-            />
-          </svg>
+          <BookmarkContainer id name bookmarked />
         </div>
       </div>
     </header>;

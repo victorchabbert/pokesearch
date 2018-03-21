@@ -36,7 +36,11 @@ module PokemonQuery = [%graphql
         disliked
         likedAt
       },
-      liked
+      liked,
+      bookmarked {
+        value
+        bookmarkedAt
+      }
     }
   }
 |}

@@ -28,6 +28,32 @@ const resolvers = {
 
       await context.UserPreferences.likePokemon(pokemon_id, userId, +liked);
       return context.Pokemon.getByName(name);
+    },
+    bookmarkPokemon: async (_parent, { id, name }, context) => {
+      const userId = context.user_token;
+      if (!userId) {
+        return null;
+      }
+
+      const pokemon_id = typeof id === "string" ? parseInt(id, 10) : id;
+      const bookmarked = await context.UserPreferences.isBookmarkedBy(
+        pokemon_id,
+        userId
+      );
+      console.log(
+        pokemon_id,
+        typeof pokemon_id,
+        "bookmarked",
+        bookmarked,
+        new Date()
+      );
+
+      await context.UserPreferences.bookmarkPokemon(
+        pokemon_id,
+        userId,
+        bookmarked
+      );
+      return context.Pokemon.getByName(name);
     }
   },
   Pokemon: {
@@ -52,6 +78,23 @@ const resolvers = {
       const liked = await context.UserPreferences.isLikedBy(pokemonId, userId);
 
       return liked;
+    },
+    bookmarked: async (parent, _args, context) => {
+      const pokemonId = parent.id;
+      const userId = context.user_token;
+      const bookmarked = await context.UserPreferences.isBookmarkedBy(
+        pokemonId,
+        userId
+      );
+
+      if (bookmarked && bookmarked.bookmarkedAt) {
+        return {
+          value: true,
+          bookmarkedAt: bookmarked.bookmarkedAt
+        };
+      }
+
+      return null;
     }
   },
   Abilities: {

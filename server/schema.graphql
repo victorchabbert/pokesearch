@@ -6,6 +6,7 @@ module.exports = `
 
   type Mutation {
     likePokemon(id: ID!, name: String!): Pokemon
+    bookmarkPokemon(id: ID!, name: String!): Pokemon
   }
 
   type PokemonList  {
@@ -29,6 +30,12 @@ module.exports = `
     types(sort: Direction): [Types!]!
     likes: [Likes!]!
     liked: Boolean!
+    bookmarked: Bookmark
+  }
+
+  type Bookmark {
+    value: Boolean!
+    bookmarkedAt: DateTime!
   }
 
   type Abilities @cacheControl(maxAge: 3600) {

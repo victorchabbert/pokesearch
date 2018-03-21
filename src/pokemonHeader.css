@@ -92,6 +92,7 @@
   fill: hsl(0, 86%, 51%);
 }
 
+.ps-PokemonCard__bookmark--active,
 .ps-PokemonCard__bookmark:hover {
   fill: hsl(28, 87%, 62%);
 }

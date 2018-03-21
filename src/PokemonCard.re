@@ -87,6 +87,7 @@ let make = (~pokemon, ~expanded=false, _children) => {
         <PokemonImage sprites=?pokemon##sprites />
         <PokemonHeader
           liked=(Js.to_bool(pokemon##liked))
+          bookmarked=(Js.Option.isSome(pokemon##bookmarked))
           name=pokemon##name
           types=pokemon##types
           height=pokemon##height
